@@ -60,6 +60,7 @@ An index of the scripts in this folder and their documentation. Each script has 
 | Script | Doc | Summary |
 |---|---|---|
 | `Loppe Status.sh` | [Loppe Status.md](Loppe%20Status.md) | Prints the contents of the Loppe status file to the terminal. |
+| `DNSSEC - StatusFile.sh` | [DNSSEC - StatusFile.md](DNSSEC%20-%20StatusFile.md) | Copies DNSSEC/DNS health-check report files from a remote host to the NAS, then displays today's dated report via `more`. |
 
 ## System
 
