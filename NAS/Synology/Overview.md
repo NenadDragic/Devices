@@ -60,7 +60,8 @@ An index of the scripts in this folder and their documentation. Each script has 
 | Script | Doc | Summary |
 |---|---|---|
 | `Loppe Status.sh` | [Loppe Status.md](Loppe%20Status.md) | Prints the contents of the Loppe status file to the terminal. |
-| `DNSSEC - StatusFile.sh` | [DNSSEC - StatusFile.md](DNSSEC%20-%20StatusFile.md) | Copies DNSSEC/DNS health-check report files from a remote host to the NAS, then displays today's dated report via `more`. |
+| `DNSSEC - StatusFile.sh` | [DNSSEC - StatusFile.md](DNSSEC%20-%20StatusFile.md) | Copies DNSSEC/DNS health-check report files from a remote host to the NAS, displays today's dated report via `more`, then deletes the local copy of that report. |
+| `Web-Stat.sh` | [Web-Stat.md](Web-Stat.md) | Copies web status HTML reports from a remote host to `/volume1/Dragic/Rap/Web_Status/`. |
 
 ## System
 
@@ -72,6 +73,6 @@ An index of the scripts in this folder and their documentation. Each script has 
 
 ## Notes
 
-- **Destructive/irreversible scripts:** `Reboot.sh` (immediate, irreversible reboot with no confirmation); the `-delete` find operations (`Thumbs.db files - Delete.sh`, `Tilde files - Delete.sh`, `bak files - Delete.sh`, `tmp files - Delete.sh`); `Delete the oldest backups - Count 3.sh` and `Delete FTP DashCam 30 over days.sh` (prune files/folders based on age or retention count); and `Copy USB - Devices.sh` / `Copy USB - Log.sh`, which remove the source files/directory after copying. Note that `Two or more spaces in filename - Delete.sh` actually renames files rather than deleting them, and `FileDelete - Router - DashCam.sh` despite its name only displays matching files' contents and does not delete anything.
+- **Destructive/irreversible scripts:** `Reboot.sh` (immediate, irreversible reboot with no confirmation); the `-delete` find operations (`Thumbs.db files - Delete.sh`, `Tilde files - Delete.sh`, `bak files - Delete.sh`, `tmp files - Delete.sh`); `Delete the oldest backups - Count 3.sh` and `Delete FTP DashCam 30 over days.sh` (prune files/folders based on age or retention count); `Copy USB - Devices.sh` / `Copy USB - Log.sh`, which remove the source files/directory after copying; and `DNSSEC - StatusFile.sh`, which deletes its own local copy of today's report after displaying it (though the report is re-copyable from the remote host on the next run). Note that `Two or more spaces in filename - Delete.sh` actually renames files rather than deleting them, and `FileDelete - Router - DashCam.sh` despite its name only displays matching files' contents and does not delete anything.
 - **Volume mismatch:** `tmp files - Find.sh` targets `/volume1/Dragic` while `tmp files - Delete.sh` targets `/volume2/Dragic` — a different volume than its Find counterpart. This looks like a likely copy/paste bug rather than an intentional design choice, and is worth verifying before relying on the Delete script to clean up what the Find script reports.
 - A `Synology/Old/` subfolder exists containing near-duplicate/deprecated-looking versions of some of these scripts. It is indexed separately in its own Overview.md and is not covered here.

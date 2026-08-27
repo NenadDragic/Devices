@@ -9,3 +9,5 @@ scp -r admina@10.0.0.214:/home/admina/DNSSEC/*.txt /volume1/Dragic/Rap/DNS_Statu
 scp -r admina@10.0.0.214:/home/admina/DNSSEC/Old/*.txt /volume1/Dragic/Rap/DNS_Status/Old
 
 more  "/volume1/Dragic/Rap/DNS_Status/Sundhedscheck-$(date +\%F).txt"
+
+rm "/volume1/Dragic/Rap/DNS_Status/Sundhedscheck-$(date +\%F).txt"
