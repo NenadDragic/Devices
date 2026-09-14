@@ -1,4 +1,15 @@
 #!/bin/bash
+# --- Dependency check (auto-inserted) ---
+_d="$(cd "$(dirname "${BASH_SOURCE[0]:-$0}")" && pwd)"
+while [ "$_d" != "/" ] && [ ! -f "$_d/lib/require_tools.sh" ]; do _d="$(dirname "$_d")"; done
+if [ ! -f "$_d/lib/require_tools.sh" ]; then
+    echo "FEJL: Kunne ikke finde lib/require_tools.sh (delt dependency-checker)." >&2
+    exit 1
+fi
+# shellcheck source=/dev/null
+source "$_d/lib/require_tools.sh"
+unset _d
+require_tools wget nmap
 
 # === Konfiguration ===
 # IP-adresse eller værtsnavn for enheden, hvorfra filer skal downloades
@@ -130,9 +141,8 @@ if [ $? -ne 0 ]; then
 fi
 
 # Tjek om port 21 er åben
-# Bemærk: nmap skal være installeret på systemet.
-if command -v nmap >/dev/null 2>&1; then
-    echo "Kontrollerer om port 21 (FTP) er åben på $target_ip..."
+# (nmap-tilstedeværelse er allerede sikret af require_tools ovenfor)
+echo "Kontrollerer om port 21 (FTP) er åben på $target_ip..."
     if nmap -PN -p 21 "$target_ip" | grep -q "21/tcp open"; then # -PN for at undgå host discovery hvis ICMP er blokeret
         echo "Port 21 er åben på $target_ip. Fortsætter med at hente MP4 filer via HTTP."
 
@@ -222,44 +232,6 @@ if command -v nmap >/dev/null 2>&1; then
             echo "Download-loop afsluttet."
         fi
     fi
-else
-    echo "Advarsel: 'nmap' kommandoen blev ikke fundet. Kan ikke tjekke port 21 status."
-    echo "Fortsætter med at hente MP4 filer via HTTP."
-    # Da nmap ikke findes, springer vi porttjek over og går direkte til download logik
-    echo "Forsøger at hente filliste fra: $html_url"
-    mp4_files=$(wget -qO- "$html_url" | \
-                grep -oE "href=\"${video_path}/[0-9]+_[0-9]+_[0-9]+_[RF]\.MP4\"" | \
-                sed -E "s|href=\"${video_path}/(.*)\"|\1|")
-    if [[ -z "$mp4_files" ]]; then
-        echo "Ingen MP4-filer fundet på siden, eller siden/filnavne kunne ikke udtrækkes korrekt."
-    else
-        echo "Fundne MP4-filer:"
-        echo "$mp4_files"
-        echo "---"
-        echo "Starter download til: $download_dir"
-        SAVEIFS=$IFS
-        IFS=$'\n'
-        for mp4_file in $mp4_files; do
-            mp4_file_clean=$(echo "$mp4_file" | tr -d '\r')
-            if [[ -z "$mp4_file_clean" ]]; then
-                continue
-            fi
-            local_file_path="$download_dir/$mp4_file_clean"
-            remote_file_url="${html_url}/${mp4_file_clean}"
-            if [ ! -e "$local_file_path" ]; then
-                echo "Downloader: $mp4_file_clean ..."
-                wget -nv -P "$download_dir" "$remote_file_url"
-                if [ $? -ne 0 ]; then
-                    echo "Advarsel: Kunne ikke downloade $mp4_file_clean fra $remote_file_url"
-                fi
-            else
-                : 
-            fi
-        done
-        IFS=$SAVEIFS
-        echo "Download-loop afsluttet."
-    fi
-fi
 
 echo "Script arbejde udført. Forbereder normal afslutning."
 # Den sidste "Script afsluttet: $(date)" vil blive håndteret af EXIT trap'en.

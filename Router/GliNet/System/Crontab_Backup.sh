@@ -61,7 +61,7 @@ for d in /etc/crontabs /var/spool/cron/crontabs /var/spool/cron; do
 done
 
 if ! command -v crontab >/dev/null 2>&1 && [ -z "$CRONDIR" ]; then
-    err "hverken crontab-kommandoen eller en cron-spool blev fundet"
+    err "crontab kommandoen findes ikke, og intet cron-spool-katalog blev fundet"
     exit 3
 fi
 
