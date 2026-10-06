@@ -21,6 +21,12 @@ This `Old` subfolder holds scripts that appear to have been superseded by near-i
 |---|---|---|
 | `DDNS - Simply.sh` | [DDNS - Simply.md](DDNS%20-%20Simply.md) | Sends a DDNS update request to the Simply.com API to update the `nas.dragic.com` subdomain with the current IP. |
 
+## System
+
+| Script | Doc | Summary |
+|---|---|---|
+| `Reboot.sh` | [Reboot.md](Reboot.md) | Immediately reboots the NAS via `shutdown -r now` — irreversible, with no confirmation prompt. Not set up as a scheduled task on the NAS (config backup 2026-10-06). |
+
 ---
 
 ## Notes
