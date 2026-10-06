@@ -24,15 +24,19 @@ Prerequisites:
 ## What the Script Does
 
 ### Step 1 – Copy current reports
+
 Runs `scp -r admina@10.0.0.214:/home/admina/DNSSEC/*.txt /volume1/Dragic/Rap/DNS_Status`, copying all current `.txt` report files from the remote host into the NAS destination folder.
 
 ### Step 2 – Copy archived reports
+
 Runs `scp -r admina@10.0.0.214:/home/admina/DNSSEC/Old/*.txt /volume1/Dragic/Rap/DNS_Status/Old`, copying the remote host's `Old/` subfolder of archived reports into the corresponding local `Old` folder.
 
 ### Step 3 – Display today's report
+
 Runs `more "/volume1/Dragic/Rap/DNS_Status/Sundhedscheck-$(date +\%F).txt"`, opening today's dated report file in a pager for viewing.
 
 ### Step 4 – Delete today's report
+
 Runs `rm "/volume1/Dragic/Rap/DNS_Status/Sundhedscheck-$(date +\%F).txt"`, deleting the local copy of today's dated report after it has been displayed.
 
 ---

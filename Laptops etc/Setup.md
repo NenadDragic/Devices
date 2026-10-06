@@ -21,9 +21,11 @@ Prerequisites:
 ## What the Script Does
 
 ### Step 1 – Opdater pakkeliste
+
 Kører `apt-get update -qq` for at hente den nyeste pakkeindeks fra de konfigurerede repositories.
 
 ### Step 2 – Vis status for hvert værktøj
+
 For hvert værktøj i `TOOLS`-listen (nederst i scriptet, som `pakkenavn:beskrivelse`) tjekkes:
 
 - Installeret version via `dpkg-query -W -f='${Version}' <pakke>`.
@@ -38,6 +40,7 @@ Resultatet vises i en nummereret tabel med et status-ikon:
 | ⚠ (gul) | Installeret, men en nyere version er tilgængelig (viser `installeret → seneste`) |
 
 ### Step 3 – Vælg og installer værktøjer
+
 Du bliver bedt om at angive numre (fra tabellen i Step 2) adskilt af mellemrum eller komma, fx `1 3 5`, eller skrive `alle` for at vælge samtlige værktøjer. Alle valgte pakker installeres/opdateres i ét samlet `apt-get install -y`-kald, så de installeres på samme tid. Tomt input (Enter) afslutter scriptet uden at ændre noget.
 
 ---
