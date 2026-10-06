@@ -8,6 +8,7 @@ An index of the scripts in this folder and their documentation. Each script has 
 
 | Script | Doc | Summary |
 |---|---|---|
+| `Backup USB Disk.sh` | [Backup USB Disk.md](Backup%20USB%20Disk.md) | Moves every top-level folder from the USB drive to `/volume1/NetBackup/`: copies first, deletes from USB only files that are identical in NetBackup, then reports anything left behind. Replaces the two `Copy USB` scripts. |
 | `Copy GPS log files.sh` | [Copy GPS log files.md](Copy%20GPS%20log%20files.md) | Copies GPS monitor CSV logs from a remote host to the NAS, then lists the destination contents. |
 | `Copy USB - Devices.sh` | [Copy USB - Devices.md](Copy%20USB%20-%20Devices.md) | Copies all files from a USB drive to `/volume1/NetBackup/`, removing source files after transfer, then cleans up empty directories and the source share. |
 | `Copy USB - Log.sh` | [Copy USB - Log.md](Copy%20USB%20-%20Log.md) | Copies log files from a USB drive to `/volume1/NetBackup/Log/`, removing the source files after transfer, then deletes the source directory. |
@@ -31,6 +32,14 @@ An index of the scripts in this folder and their documentation. Each script has 
 | `FileCount - Router - DashCam.sh` | [FileCount - Router - DashCam.md](FileCount%20-%20Router%20-%20DashCam.md) | Finds all files in `/volume1/DashCam/File-Count-DashCam/` modified today and displays their contents using `more`. |
 | `FileCount - Router - SD.sh` | [FileCount - Router - SD.md](FileCount%20-%20Router%20-%20SD.md) | Finds all files in `/volume1/DashCam/File-Count-SD/` modified today and displays their contents. |
 | `FileCount - SFTP - DashCam.sh` | [FileCount - SFTP - DashCam.md](FileCount%20-%20SFTP%20-%20DashCam.md) | Counts the number of files in each DashCam directory and prints the results to the console. |
+
+## Cleanup: Combined jobs
+
+| Script | Doc | Summary |
+|---|---|---|
+| `Oprydning - Find.sh` | [Oprydning - Find.md](Oprydning%20-%20Find.md) | One scan of `/volume1/Dragic` that reports `.bak`, `.tmp`, `Thumbs.db`, `~` files, CORRUPT/INVALID files and names with double spaces. Replaces the separate Find scripts below. |
+| `Oprydning - Delete.sh` | [Oprydning - Delete.md](Oprydning%20-%20Delete.md) | Same script as `Oprydning - Find.sh`; with `MODE=clean` it deletes the junk files and collapses double spaces in names. Replaces the separate Delete scripts below. Currently set to `MODE=find` (see Notes). |
+| `Oprydning - DashCam.sh` | [Oprydning - DashCam.md](Oprydning%20-%20DashCam.md) | Weekly DashCam job: deletes recordings older than 30 days, shows file counts and sizes per folder, and prints the router reports from the last 7 days. Replaces six DashCam jobs. |
 
 ## Cleanup: Find/Delete pairs
 
@@ -75,4 +84,5 @@ An index of the scripts in this folder and their documentation. Each script has 
 
 - **Destructive/irreversible scripts:** `Reboot.sh` (immediate, irreversible reboot with no confirmation); the `-delete` find operations (`Thumbs.db files - Delete.sh`, `Tilde files - Delete.sh`, `bak files - Delete.sh`, `tmp files - Delete.sh`); `Delete the oldest backups - Count 3.sh` and `Delete FTP DashCam 30 over days.sh` (prune files/folders based on age or retention count); `Copy USB - Devices.sh` / `Copy USB - Log.sh`, which remove the source files/directory after copying; and `DNSSEC - StatusFile.sh`, which deletes its own local copy of today's report after displaying it (though the report is re-copyable from the remote host on the next run). Note that `Two or more spaces in filename - Delete.sh` actually renames files rather than deleting them, and `FileDelete - Router - DashCam.sh` despite its name only displays matching files' contents and does not delete anything.
 - **Volume mismatch:** `tmp files - Find.sh` targets `/volume1/Dragic` while `tmp files - Delete.sh` targets `/volume2/Dragic` — a different volume than its Find counterpart. This looks like a likely copy/paste bug rather than an intentional design choice, and is worth verifying before relying on the Delete script to clean up what the Find script reports.
+- **`Oprydning - Delete.sh` does not delete yet:** it has `MODE=find`, the same as `Oprydning - Find.sh`, so it only reports. Change it to `MODE=clean` to make it delete. `Oprydning - DashCam.sh` and `Backup USB Disk.sh` also delete files (`rm` / `--remove-source-files`).
 - A `Synology/Old/` subfolder exists containing near-duplicate/deprecated-looking versions of some of these scripts. It is indexed separately in its own Overview.md and is not covered here.
