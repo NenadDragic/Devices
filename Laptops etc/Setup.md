@@ -32,7 +32,7 @@ For hvert værktøj i `TOOLS`-listen (nederst i scriptet, som `pakkenavn:beskriv
 Resultatet vises i en nummereret tabel med et status-ikon:
 
 | Ikon | Betydning |
-|---|---|
+| --- | --- |
 | ✘ (rød) | Ikke installeret |
 | ✔ (grøn) | Installeret, og det er den seneste version |
 | ⚠ (gul) | Installeret, men en nyere version er tilgængelig (viser `installeret → seneste`) |

@@ -9,7 +9,7 @@ This `Old` subfolder holds scripts that appear to have been superseded by near-i
 ## File Cleanup
 
 | Script | Doc | Summary |
-|---|---|---|
+| --- | --- | --- |
 | `Bak files - Delete.sh` | [Bak files - Delete.md](Bak%20files%20-%20Delete.md) | Deletes all files in the `/volume1/Dragic` directory that end with the `.bak` extension. |
 | `Bak files - Find.sh` | [Bak files - Find.md](Bak%20files%20-%20Find.md) | Finds all files in the `/volume1/Dragic` directory that are named `*.bak`. |
 | `TMP files - Delete.sh` | [TMP files - Delete.md](TMP%20files%20-%20Delete.md) | Deletes all files in the `/volume1/Dragic` directory that end with the `.tmp` extension. |
@@ -18,13 +18,13 @@ This `Old` subfolder holds scripts that appear to have been superseded by near-i
 ## Dynamic DNS
 
 | Script | Doc | Summary |
-|---|---|---|
+| --- | --- | --- |
 | `DDNS - Simply.sh` | [DDNS - Simply.md](DDNS%20-%20Simply.md) | Sends a DDNS update request to the Simply.com API to update the `nas.dragic.com` subdomain with the current IP. |
 
 ## System
 
 | Script | Doc | Summary |
-|---|---|---|
+| --- | --- | --- |
 | `Reboot.sh` | [Reboot.md](Reboot.md) | Immediately reboots the NAS via `shutdown -r now` — irreversible, with no confirmation prompt. Not set up as a scheduled task on the NAS (config backup 2026-10-06). |
 
 ---

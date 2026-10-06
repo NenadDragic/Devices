@@ -11,7 +11,7 @@ find /volume1/Dragic -name "*.bak" -type f -delete 2>/dev/null
 ## Options
 
 | Option | Description |
-| ------ | ----------- |
+| --- | --- |
 | `-name "*.bak"` | Match filenames ending with `.bak` |
 | `-type f` | Match regular files only (excludes directories) |
 | `-delete` | Delete each matched file |

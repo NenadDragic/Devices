@@ -11,7 +11,7 @@ Moves every top-level folder from the USB drive to the matching folder in `/volu
 ## Configuration
 
 | Variable | Default | Description |
-| -------- | ------- | ----------- |
+| --- | --- | --- |
 | `USB` | `/volumeUSB1/usbshare` | USB share to empty |
 | `DST` | `/volume1/NetBackup` | Destination share |
 | `SKIP` | `#recycle`, `@eaDir`, `System Volume Information`, `$RECYCLE.BIN`, `lost+found` | Top-level folders that are never moved |
@@ -20,7 +20,7 @@ Moves every top-level folder from the USB drive to the matching folder in `/volu
 ## Options
 
 | Option | Description |
-| ------ | ----------- |
+| --- | --- |
 | `rsync -a` | Archive mode - preserves permissions, timestamps, symlinks, etc. |
 | `rsync -u` | Never overwrite a newer file in NetBackup - such a file stays on USB and is reported in step 3 |
 | `--remove-source-files` | Delete source files that were transferred or are already identical |

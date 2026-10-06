@@ -17,7 +17,7 @@ The same script is used by `Oprydning - Find.sh`; only `MODE` differs.
 ## Configuration
 
 | Variable | Default | Description |
-| -------- | ------- | ----------- |
+| --- | --- | --- |
 | `MODE` | `clean` | `clean` deletes and renames; `find` reports only |
 | `ROOT` | `/volume1/Dragic` | Share to clean |
 | `MIN_AGE_MIN` | `1440` | Only touch files not modified in the last 24 hours |

@@ -13,7 +13,7 @@ ls -al /volume1/Dragic/Rap/Loppe
 ## Options
 
 | Option | Description |
-| ------ | ----------- |
+| --- | --- |
 | `scp -r` | Recursively copy a directory over SSH |
 | `admina@10.0.0.215` | Remote user and host IP |
 | `/home/admina/Loppe/` | Source directory on remote host |

@@ -7,7 +7,7 @@ An index of the scripts in this folder and their documentation. Each script has 
 ## Backup & Copy
 
 | Script | Doc | Summary |
-|---|---|---|
+| --- | --- | --- |
 | `Backup USB Disk.sh` | [Backup USB Disk.md](Backup%20USB%20Disk.md) | Moves every top-level folder from the USB drive to `/volume1/NetBackup/`: copies first, deletes from USB only files that are identical in NetBackup, then reports anything left behind. Replaces the two `Copy USB` scripts. |
 | `Copy GPS log files.sh` | [Copy GPS log files.md](Copy%20GPS%20log%20files.md) | Copies GPS monitor CSV logs from a remote host to the NAS, then lists the destination contents. |
 | `Copy USB - Devices.sh` | [Copy USB - Devices.md](Copy%20USB%20-%20Devices.md) | Copies all files from a USB drive to `/volume1/NetBackup/`, removing source files after transfer, then cleans up empty directories and the source share. |
@@ -19,13 +19,13 @@ An index of the scripts in this folder and their documentation. Each script has 
 ## DDNS
 
 | Script | Doc | Summary |
-|---|---|---|
+| --- | --- | --- |
 | `DDNS - E-Studie.sh` | [DDNS - E-Studie.md](DDNS%20-%20E-Studie.md) | Triggers a DDNS update via a cPanel webcall on `dragic.com`. |
 
 ## Disk & File Counting
 
 | Script | Doc | Summary |
-|---|---|---|
+| --- | --- | --- |
 | `Disk Used size - DashCam.sh` | [Disk Used size - DashCam.md](Disk%20Used%20size%20-%20DashCam.md) | Shows disk usage for `/volume1/DashCam/` up to 1 directory level deep, then prints the total. |
 | `Disk Used size - Dragic.sh` | [Disk Used size - Dragic.md](Disk%20Used%20size%20-%20Dragic.md) | Shows disk usage for `/volume1/Dragic/` up to 1 directory level deep, then prints the total. |
 | `Disk Used size - NetBackup.sh` | [Disk Used size - NetBackup.md](Disk%20Used%20size%20-%20NetBackup.md) | Shows disk usage for `/volume1/NetBackup/` up to 2 directory levels deep, then prints the total. |
@@ -36,7 +36,7 @@ An index of the scripts in this folder and their documentation. Each script has 
 ## Cleanup: Combined jobs
 
 | Script | Doc | Summary |
-|---|---|---|
+| --- | --- | --- |
 | `Oprydning - Find.sh` | [Oprydning - Find.md](Oprydning%20-%20Find.md) | One scan of `/volume1/Dragic` that reports `.bak`, `.tmp`, `Thumbs.db`, `~` files, CORRUPT/INVALID files and names with double spaces. Replaces the separate Find scripts below. |
 | `Oprydning - Delete.sh` | [Oprydning - Delete.md](Oprydning%20-%20Delete.md) | Same script as `Oprydning - Find.sh` but with `MODE=clean`: deletes `.bak`, `.tmp`, `Thumbs.db` and `~` files older than 24 hours and collapses double spaces in names. Replaces the separate Delete scripts below. |
 | `Oprydning - DashCam.sh` | [Oprydning - DashCam.md](Oprydning%20-%20DashCam.md) | Weekly DashCam job: deletes recordings older than 30 days, shows file counts and sizes per folder, and prints the router reports from the last 7 days. Replaces six DashCam jobs. |
@@ -44,7 +44,7 @@ An index of the scripts in this folder and their documentation. Each script has 
 ## Cleanup: Find/Delete pairs
 
 | Script | Doc | Summary |
-|---|---|---|
+| --- | --- | --- |
 | `Thumbs.db files - Find.sh` | [Thumbs.db files - Find.md](Thumbs.db%20files%20-%20Find.md) | Finds all `Thumbs.db` files under `/volume1/Dragic` (Windows thumbnail cache files often left behind on network shares). |
 | `Thumbs.db files - Delete.sh` | [Thumbs.db files - Delete.md](Thumbs.db%20files%20-%20Delete.md) | Deletes all `Thumbs.db` files under `/volume1/Dragic`. |
 | `Tilde files - Find.sh` | [Tilde files - Find.md](Tilde%20files%20-%20Find.md) | Finds all files under `/volume1/Dragic` that start with a tilde (`~`) and have any extension. |
@@ -60,14 +60,14 @@ An index of the scripts in this folder and their documentation. Each script has 
 ## Integrity Checks
 
 | Script | Doc | Summary |
-|---|---|---|
+| --- | --- | --- |
 | `Find Corrup files.sh` | [Find Corrup files.md](Find%20Corrup%20files.md) | Finds all files under `/volume1/Dragic` that contain `CORRUPT` in their filename. |
 | `Find Invalid files.sh` | [Find Invalid files.md](Find%20Invalid%20files.md) | Finds all files under `/volume1/Dragic` that contain `INVALID` in their filename. |
 
 ## Status/Monitoring
 
 | Script | Doc | Summary |
-|---|---|---|
+| --- | --- | --- |
 | `Loppe Status.sh` | [Loppe Status.md](Loppe%20Status.md) | Prints the contents of the Loppe status file to the terminal. |
 | `DNSSEC - StatusFile.sh` | [DNSSEC - StatusFile.md](DNSSEC%20-%20StatusFile.md) | Copies DNSSEC/DNS health-check report files from a remote host to the NAS, displays today's dated report via `more`, then deletes the local copy of that report. |
 | `Web-Stat.sh` | [Web-Stat.md](Web-Stat.md) | Copies web status HTML reports from a remote host to `/volume1/Dragic/Rap/Web_Status/`. |

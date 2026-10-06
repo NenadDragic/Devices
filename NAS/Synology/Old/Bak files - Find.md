@@ -11,7 +11,7 @@ find /volume1/Dragic -name "*.bak" -type f
 ## Options
 
 | Option | Description |
-| ------ | ----------- |
+| --- | --- |
 | `-name "*.bak"` | Specifies the pattern to match the filenames |
 | `-type f` | Ensures that only regular files (not directories) are matched |
 

@@ -11,7 +11,7 @@ find /volume1/Dragic -name "~*.*" -type f -delete 2>/dev/null
 ## Options
 
 | Option | Description |
-| ------ | ----------- |
+| --- | --- |
 | `-name "~*.*"` | Match filenames starting with `~` and containing an extension |
 | `-type f` | Match regular files only (excludes directories) |
 | `-delete` | Delete each matched file |

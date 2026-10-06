@@ -13,7 +13,7 @@ ls -alh /volume1/Dragic/Rap/GPS_log/logs/csv/
 ## Options
 
 | Option | Description |
-| ------ | ----------- |
+| --- | --- |
 | `scp -r` | Recursively copy a directory over SSH |
 | `admina@10.0.0.149` | Remote user and host IP |
 | `/home/admina/gps_monitor/logs/` | Source directory on remote host |

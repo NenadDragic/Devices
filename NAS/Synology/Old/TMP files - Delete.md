@@ -11,7 +11,7 @@ find /volume1/Dragic -name "*.tmp" -type f -delete 2>/dev/null
 ## Options
 
 | Option | Description |
-| ------ | ----------- |
+| --- | --- |
 | `-name "*.tmp"` | Matches files with the `.tmp` extension |
 | `-type f` | Ensures only regular files are matched, not directories |
 | `-delete` | Deletes each matched file |

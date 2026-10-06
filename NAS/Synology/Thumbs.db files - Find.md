@@ -11,7 +11,7 @@ find /volume1/Dragic -name "Thumbs.db" -type f
 ## Options
 
 | Option | Description |
-| ------ | ----------- |
+| --- | --- |
 | `-name "Thumbs.db"` | Match files with the exact name `Thumbs.db` |
 | `-type f` | Match regular files only (excludes directories) |
 

@@ -7,14 +7,14 @@ An index of the scripts in this folder and their documentation. Each script has 
 ## Package Management
 
 | Script | Doc | Summary |
-|---|---|---|
+| --- | --- | --- |
 | `Install.sh` | [Install.md](Install.md) | Installs the base set of tools (`nano`, `git`, SFTP server, `sshpass`, `rsync`, `nmap`, `coreutils-nohup`) via `opkg`, then updates and upgrades all packages. |
 | `Update.sh` | [Update.md](Update.md) | Refreshes the router's `opkg` package index (`opkg update`). |
 
 ## Backup
 
 | Script | Doc | Summary |
-|---|---|---|
+| --- | --- | --- |
 | `Crontab_Backup.sh` | [Crontab_Backup.md](Crontab_Backup.md) | POSIX `sh` script that saves each user's crontab to a timestamped file under `/root/Scripts/Crontab` (configurable), with options to target specific users, include system cron, prune old backups, and dry-run. |
 
 ---

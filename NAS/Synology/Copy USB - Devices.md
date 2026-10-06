@@ -17,7 +17,7 @@ sudo rm -rf /volumeUSB1/usbshare/
 ## Options
 
 | Option | Description |
-| ------ | ----------- |
+| --- | --- |
 | `-a` | Archive mode — preserves permissions, timestamps, symlinks, etc. |
 | `-v` | Verbose output |
 | `--progress` | Show transfer progress |

@@ -11,7 +11,7 @@ find /volume1/Dragic/ -name '*  *' -exec sh -c 'mv "$1" "${1//  / }"' find-sh {}
 ## Options
 
 | Option | Description |
-| ------ | ----------- |
+| --- | --- |
 | `-name '*  *'` | Match filenames containing two consecutive spaces (single quotes prevent shell wildcard expansion) |
 | `-exec sh -c '...' find-sh {} \;` | Execute a shell command on each matched file |
 | `mv "$1" "${1//  / }"` | Rename the file by replacing double spaces with a single space |

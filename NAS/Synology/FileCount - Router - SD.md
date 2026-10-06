@@ -28,7 +28,7 @@ fi
 ## Options
 
 | Option | Description |
-| ------ | ----------- |
+| --- | --- |
 | `-maxdepth 1` | Search only the specified directory, not subdirectories |
 | `-type f` | Match regular files only (excludes directories) |
 | `-newer /tmp/start_marker` | Match files modified after start of today |

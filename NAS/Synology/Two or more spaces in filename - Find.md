@@ -11,7 +11,7 @@ find /volume1/Dragic/ -name '*  *'
 ## Options
 
 | Option | Description |
-| ------ | ----------- |
+| --- | --- |
 | `-name '*  *'` | Match filenames containing two consecutive spaces (single quotes prevent shell wildcard expansion) |
 
 ## Usage

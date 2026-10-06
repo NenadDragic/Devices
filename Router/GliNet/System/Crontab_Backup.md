@@ -23,7 +23,7 @@ chmod +x Crontab_Backup.sh
 ```
 
 | Option | Description |
-| ------ | ----------- |
+| --- | --- |
 | `-d KATALOG` | Output directory (default: `/root/Scripts/Crontab`) |
 | `-u BRUGER` | Back up only this user (repeatable). Default: every user in passwd (plus any spool-only users) |
 | `-k DAGE` | Delete backup files older than this many days in the output directory (`0` = no cleanup) |

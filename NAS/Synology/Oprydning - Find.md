@@ -7,7 +7,7 @@ The same script is used by `Oprydning - Delete.sh`; only `MODE` differs.
 ## What it reports
 
 | List | Match |
-| ---- | ----- |
+| --- | --- |
 | `.bak` files | `*.bak` (case-insensitive) |
 | `.tmp` files | `*.tmp` (case-insensitive) |
 | `Thumbs.db` | `Thumbs.db` (case-insensitive) |
@@ -21,7 +21,7 @@ The same script is used by `Oprydning - Delete.sh`; only `MODE` differs.
 ## Configuration
 
 | Variable | Default | Description |
-| -------- | ------- | ----------- |
+| --- | --- | --- |
 | `MODE` | `find` | `find` reports only; `clean` deletes and renames (see `Oprydning - Delete.md`) |
 | `ROOT` | `/volume1/Dragic` | Share to scan |
 | `MIN_AGE_MIN` | `1440` | In `clean` mode, only touch files not modified in the last 24 hours |

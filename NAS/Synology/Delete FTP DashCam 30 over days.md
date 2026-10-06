@@ -11,7 +11,7 @@ find /volume1/DashCam -path "/volume1/DashCam/#recycle" -prune -o -type f -mtime
 ## Options
 
 | Option | Description |
-| ------ | ----------- |
+| --- | --- |
 | `-path "/volume1/DashCam/#recycle" -prune` | Skip the Synology recycle bin directory |
 | `-type f` | Match regular files only (excludes directories) |
 | `-mtime +30` | Match files last modified more than 30 days ago |

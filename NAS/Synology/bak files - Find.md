@@ -11,7 +11,7 @@ find /volume1/Dragic -name "*.bak" -type f
 ## Options
 
 | Option | Description |
-| ------ | ----------- |
+| --- | --- |
 | `-name "*.bak"` | Match filenames ending with `.bak` |
 | `-type f` | Match regular files only (excludes directories) |
 

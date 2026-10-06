@@ -11,7 +11,7 @@ curl -s -L "https://api.simply.com/ddns.php?apikey=<apikey>&domain=dragic.com&ho
 ## Parameters
 
 | Parameter | Value | Description |
-| --------- | ----- | ----------- |
+| --- | --- | --- |
 | `apikey` | *(see script)* | API key for authentication |
 | `domain` | `dragic.com` | Domain to update |
 | `hostname` | `nas` | Subdomain to update (`nas.dragic.com`) |
@@ -19,7 +19,7 @@ curl -s -L "https://api.simply.com/ddns.php?apikey=<apikey>&domain=dragic.com&ho
 ## Options
 
 | Option | Description |
-| ------ | ----------- |
+| --- | --- |
 | `-s` | Silent mode — suppresses progress output |
 | `-L` | Follow redirects |
 

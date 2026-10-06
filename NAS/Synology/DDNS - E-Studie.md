@@ -11,7 +11,7 @@ curl -s -L "https://dragic.com/cpanelwebcall/"
 ## Options
 
 | Option | Description |
-| ------ | ----------- |
+| --- | --- |
 | `-s` | Silent mode — suppresses progress output |
 | `-L` | Follow redirects |
 

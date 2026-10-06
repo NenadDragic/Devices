@@ -13,7 +13,7 @@ sudo shutdown -r now
 ## Options
 
 | Option | Description |
-| ------ | ----------- |
+| --- | --- |
 | `-r` | Reboot after shutdown |
 | `now` | Execute immediately with no delay |
 

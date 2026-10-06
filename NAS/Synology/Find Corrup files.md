@@ -11,7 +11,7 @@ find /volume1/Dragic -name "*CORRUPT*.*" -type f
 ## Options
 
 | Option | Description |
-| ------ | ----------- |
+| --- | --- |
 | `-name "*CORRUPT*.*"` | Match filenames containing `CORRUPT` and having an extension |
 | `-type f` | Match regular files only (excludes directories) |
 

@@ -12,7 +12,7 @@ scp admina@10.0.0.214:'/home/admina/Web-Stat/reports/*.html' \
 ## Options
 
 | Option | Description |
-| ------ | ----------- |
+| --- | --- |
 | `admina@10.0.0.214` | Remote user and host IP |
 | `/home/admina/Web-Stat/reports/*.html` | Source HTML reports on the remote host (quoted so the glob expands on the remote side, not locally) |
 | `/volume1/Dragic/Rap/Web_Status/` | Destination directory on the NAS |

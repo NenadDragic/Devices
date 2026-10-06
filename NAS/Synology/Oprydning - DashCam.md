@@ -11,7 +11,7 @@ Weekly DashCam cleanup and report in one job. Replaces six separate jobs: `Delet
 ## Configuration
 
 | Variable | Default | Description |
-| -------- | ------- | ----------- |
+| --- | --- | --- |
 | `ROOT` | `/volume1/DashCam` | DashCam share |
 | `KEEP_DAYS` | `30` | Delete files older than this |
 | `REPORT_DAYS` | `7` | Show router reports from this many days (job runs weekly) |

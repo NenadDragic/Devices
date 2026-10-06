@@ -11,7 +11,7 @@ find /volume1/Dragic -name "*INVALID*.*" -type f
 ## Options
 
 | Option | Description |
-| ------ | ----------- |
+| --- | --- |
 | `-name "*INVALID*.*"` | Match filenames containing `INVALID` and having an extension |
 | `-type f` | Match regular files only (excludes directories) |
 
