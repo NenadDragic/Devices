@@ -1,5 +1,5 @@
 #!/bin/bash
-# Version:      1.0
+# Version:      1.1
 # Date:         2026-10-06
 # Test Run:
 # Developper:   Nenad(a)dragic(.)com
@@ -8,7 +8,7 @@
 # Samme script i begge jobs - kun MODE er forskellig:
 # MODE=find   viser fund, ændrer intet
 # MODE=clean  sletter junk-filer og retter dobbelte mellemrum
-MODE=find
+MODE=clean
 ROOT=/volume1/Dragic
 MIN_AGE_MIN=1440   # clean rører kun filer, der ikke er ændret de sidste 24 timer
 

@@ -4,9 +4,9 @@ Scans `/volume1/Dragic` once, deletes junk files and fixes file names with doubl
 
 The same script is used by `Oprydning - Find.sh`; only `MODE` differs.
 
-> **Note:** The version on the NAS (and in this repo) has `MODE=find`, so this job currently only reports, exactly like `Oprydning - Find.sh`. Set `MODE=clean` to make it delete.
+> **Note:** The repo version (1.1) has `MODE=clean`. The job on the NAS still had `MODE=find` in the config backup of 2026-10-06 and must be updated there too.
 
-## What it does in `clean` mode
+## What it does
 
 1. Deletes `.bak`, `.tmp`, `Thumbs.db` and `~*.*` files that have not been modified for `MIN_AGE_MIN` minutes.
 2. Renames files and folders with two or more consecutive spaces so the spaces collapse to one. Names are handled deepest-first, so contents are renamed before their folder. If the new name already exists the item is skipped and reported.
@@ -18,7 +18,7 @@ The same script is used by `Oprydning - Find.sh`; only `MODE` differs.
 
 | Variable | Default | Description |
 | -------- | ------- | ----------- |
-| `MODE` | `find` | `find` reports only; `clean` deletes and renames |
+| `MODE` | `clean` | `clean` deletes and renames; `find` reports only |
 | `ROOT` | `/volume1/Dragic` | Share to clean |
 | `MIN_AGE_MIN` | `1440` | Only touch files not modified in the last 24 hours |
 
