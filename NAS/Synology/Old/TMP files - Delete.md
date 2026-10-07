@@ -1,26 +1,26 @@
-# TMP files - Delete
+# tmp files - Delete
 
-This script deletes all files in the `/volume1/Dragic` directory that end with the `.tmp` extension.
+Deletes all `.tmp` files under `/volume2/Dragic`.
 
 ## Command
 
 ```bash
-find /volume1/Dragic -name "*.tmp" -type f -delete 2>/dev/null
+find /volume2/Dragic -name "*.tmp" -type f -delete 2>/dev/null
 ```
 
 ## Options
 
 | Option | Description |
 | --- | --- |
-| `-name "*.tmp"` | Matches files with the `.tmp` extension |
-| `-type f` | Ensures only regular files are matched, not directories |
-| `-delete` | Deletes each matched file |
-| `2>/dev/null` | Suppresses error messages by redirecting stderr to `/dev/null` |
+| `-name "*.tmp"` | Match filenames ending with `.tmp` |
+| `-type f` | Match regular files only (excludes directories) |
+| `-delete` | Delete each matched file |
+| `2>/dev/null` | Suppress error messages |
 
 ## Usage
 
 ```bash
-bash "TMP files - Delete.sh"
+bash "tmp files - Delete.sh"
 ```
 
-Replace `/volume1/Dragic` with the actual directory path if necessary.
+Replace `/volume2/Dragic` with the target directory path if needed.

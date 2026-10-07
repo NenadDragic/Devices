@@ -1,6 +1,6 @@
-# TMP files - Find
+# tmp files - Find
 
-This script finds all files in the `/volume1/Dragic` directory that end with the `.tmp` extension.
+Finds all `.tmp` files under `/volume1/Dragic`.
 
 ## Command
 
@@ -12,13 +12,13 @@ find /volume1/Dragic -name "*.tmp" -type f
 
 | Option | Description |
 | --- | --- |
-| `-name "*.tmp"` | Matches files with the `.tmp` extension |
-| `-type f` | Ensures only regular files are matched, not directories |
+| `-name "*.tmp"` | Match filenames ending with `.tmp` |
+| `-type f` | Match regular files only (excludes directories) |
 
 ## Usage
 
 ```bash
-bash "TMP files - Find.sh"
+bash "tmp files - Find.sh"
 ```
 
-Replace `/volume1/Dragic` with the actual directory path if necessary.
+Replace `/volume1/Dragic` with the target directory path if needed.
