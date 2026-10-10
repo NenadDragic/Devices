@@ -8,61 +8,25 @@ An index of the scripts in this folder and their documentation. Each script has 
 
 | Script | Doc | Summary |
 | --- | --- | --- |
-| `Backup USB Disk.sh` | [Backup USB Disk.md](Backup%20USB%20Disk.md) | Moves every top-level folder from the USB drive to `/volume1/NetBackup/`: copies first, deletes from USB only files that are identical in NetBackup, then reports anything left behind. Replaces the two `Copy USB` scripts. |
+| `Backup USB Disk.sh` | [Backup USB Disk.md](Backup%20USB%20Disk.md) | Moves every top-level folder from the USB drive to `/volume1/NetBackup/`: copies first, deletes from USB only files that are identical in NetBackup, then reports anything left behind. Replaces the two `Copy USB` scripts, now in `Old/`. |
 | `Copy GPS log files.sh` | [Copy GPS log files.md](Copy%20GPS%20log%20files.md) | Copies GPS monitor CSV logs from a remote host to the NAS, then lists the destination contents. |
-| `Copy USB - Devices.sh` | [Copy USB - Devices.md](Copy%20USB%20-%20Devices.md) | Copies all files from a USB drive to `/volume1/NetBackup/`, removing source files after transfer, then cleans up empty directories and the source share. |
-| `Copy USB - Log.sh` | [Copy USB - Log.md](Copy%20USB%20-%20Log.md) | Copies log files from a USB drive to `/volume1/NetBackup/Log/`, removing the source files after transfer, then deletes the source directory. |
 | `Loppe files Copy.sh` | [Loppe files Copy.md](Loppe%20files%20Copy.md) | Copies the `Loppe` directory from a remote host to the NAS, then lists the destination contents. |
 | `Delete the oldest backups - Count 3.sh` | [Delete the oldest backups - Count 3.md](Delete%20the%20oldest%20backups%20-%20Count%203.md) | Loops through a list of backup folders and deletes all subdirectories except the 3 newest in each. |
-| `Delete FTP DashCam 30 over days.sh` | [Delete FTP DashCam 30 over days.md](Delete%20FTP%20DashCam%2030%20over%20days.md) | Deletes all files in `/volume1/DashCam` that were last modified more than 30 days ago, skipping the recycle bin. |
-
-## DDNS
-
-| Script | Doc | Summary |
-| --- | --- | --- |
-| `DDNS - E-Studie.sh` | [DDNS - E-Studie.md](DDNS%20-%20E-Studie.md) | Triggers a DDNS update via a cPanel webcall on `dragic.com`. |
 
 ## Disk & File Counting
 
 | Script | Doc | Summary |
 | --- | --- | --- |
-| `Disk Used size - DashCam.sh` | [Disk Used size - DashCam.md](Disk%20Used%20size%20-%20DashCam.md) | Shows disk usage for `/volume1/DashCam/` up to 1 directory level deep, then prints the total. |
 | `Disk Used size - Dragic.sh` | [Disk Used size - Dragic.md](Disk%20Used%20size%20-%20Dragic.md) | Shows disk usage for `/volume1/Dragic/` up to 1 directory level deep, then prints the total. |
 | `Disk Used size - NetBackup.sh` | [Disk Used size - NetBackup.md](Disk%20Used%20size%20-%20NetBackup.md) | Shows disk usage for `/volume1/NetBackup/` up to 2 directory levels deep, then prints the total. |
-| `FileCount - Router - DashCam.sh` | [FileCount - Router - DashCam.md](FileCount%20-%20Router%20-%20DashCam.md) | Finds all files in `/volume1/DashCam/File-Count-DashCam/` modified today and displays their contents using `more`. |
-| `FileCount - Router - SD.sh` | [FileCount - Router - SD.md](FileCount%20-%20Router%20-%20SD.md) | Finds all files in `/volume1/DashCam/File-Count-SD/` modified today and displays their contents. |
-| `FileCount - SFTP - DashCam.sh` | [FileCount - SFTP - DashCam.md](FileCount%20-%20SFTP%20-%20DashCam.md) | Counts the number of files in each DashCam directory and prints the results to the console. |
 
 ## Cleanup: Combined jobs
 
 | Script | Doc | Summary |
 | --- | --- | --- |
-| `Oprydning - Find.sh` | [Oprydning - Find.md](Oprydning%20-%20Find.md) | One scan of `/volume1/Dragic` that reports `.bak`, `.tmp`, `Thumbs.db`, `~` files, CORRUPT/INVALID files and names with double spaces. Replaces the separate Find scripts below. |
-| `Oprydning - Delete.sh` | [Oprydning - Delete.md](Oprydning%20-%20Delete.md) | Same script as `Oprydning - Find.sh` but with `MODE=clean`: deletes `.bak`, `.tmp`, `Thumbs.db` and `~` files older than 24 hours and collapses double spaces in names. Replaces the separate Delete scripts below. |
-| `Oprydning - DashCam.sh` | [Oprydning - DashCam.md](Oprydning%20-%20DashCam.md) | Weekly DashCam job: deletes recordings older than 30 days, shows file counts and sizes per folder, and prints the router reports from the last 7 days. Replaces six DashCam jobs. |
-
-## Cleanup: Find/Delete pairs
-
-| Script | Doc | Summary |
-| --- | --- | --- |
-| `Thumbs.db files - Find.sh` | [Thumbs.db files - Find.md](Thumbs.db%20files%20-%20Find.md) | Finds all `Thumbs.db` files under `/volume1/Dragic` (Windows thumbnail cache files often left behind on network shares). |
-| `Thumbs.db files - Delete.sh` | [Thumbs.db files - Delete.md](Thumbs.db%20files%20-%20Delete.md) | Deletes all `Thumbs.db` files under `/volume1/Dragic`. |
-| `Tilde files - Find.sh` | [Tilde files - Find.md](Tilde%20files%20-%20Find.md) | Finds all files under `/volume1/Dragic` that start with a tilde (`~`) and have any extension. |
-| `Tilde files - Delete.sh` | [Tilde files - Delete.md](Tilde%20files%20-%20Delete.md) | Deletes all files under `/volume1/Dragic` that start with a tilde (`~`) and have any extension. |
-| `Two or more spaces in filename - Find.sh` | [Two or more spaces in filename - Find.md](Two%20or%20more%20spaces%20in%20filename%20-%20Find.md) | Finds all files under `/volume1/Dragic` that have two or more consecutive spaces in their names. |
-| `Two or more spaces in filename - Delete.sh` | [Two or more spaces in filename - Delete.md](Two%20or%20more%20spaces%20in%20filename%20-%20Delete.md) | Finds files with two or more consecutive spaces in their names and renames them to collapse the double spaces to one — despite the "Delete" name, it renames rather than deletes. |
-| `bak files - Find.sh` | [bak files - Find.md](bak%20files%20-%20Find.md) | Finds all `.bak` files under `/volume1/Dragic`. |
-| `bak files - Delete.sh` | [bak files - Delete.md](bak%20files%20-%20Delete.md) | Deletes all `.bak` files under `/volume1/Dragic`. |
-| `tmp files - Find.sh` | [tmp files - Find.md](tmp%20files%20-%20Find.md) | Finds all `.tmp` files under `/volume1/Dragic`. |
-| `tmp files - Delete.sh` | [tmp files - Delete.md](tmp%20files%20-%20Delete.md) | Deletes all `.tmp` files under `/volume2/Dragic` — note the different volume than the Find script above (see Notes). |
-| `FileDelete - Router - DashCam.sh` | [FileDelete - Router - DashCam.md](FileDelete%20-%20Router%20-%20DashCam.md) | Finds all files in `/volume1/DashCam/File-Delete/` modified today and displays their contents using `more` — despite the name, it does not delete anything. |
-
-## Integrity Checks
-
-| Script | Doc | Summary |
-| --- | --- | --- |
-| `Find Corrup files.sh` | [Find Corrup files.md](Find%20Corrup%20files.md) | Finds all files under `/volume1/Dragic` that contain `CORRUPT` in their filename. |
-| `Find Invalid files.sh` | [Find Invalid files.md](Find%20Invalid%20files.md) | Finds all files under `/volume1/Dragic` that contain `INVALID` in their filename. |
+| `Oprydning - Find.sh` | [Oprydning - Find.md](Oprydning%20-%20Find.md) | One scan of `/volume1/Dragic` that reports `.bak`, `.tmp`, `Thumbs.db`, `~` files, CORRUPT/INVALID files and names with double spaces. Replaces the separate Find scripts, now in `Old/`. |
+| `Oprydning - Delete.sh` | [Oprydning - Delete.md](Oprydning%20-%20Delete.md) | Same script as `Oprydning - Find.sh` but with `MODE=clean`: deletes `.bak`, `.tmp`, `Thumbs.db` and `~` files older than 24 hours and collapses double spaces in names. Replaces the separate Delete scripts, now in `Old/`. |
+| `Oprydning - DashCam.sh` | [Oprydning - DashCam.md](Oprydning%20-%20DashCam.md) | Weekly DashCam job: deletes recordings older than 30 days, shows file counts and sizes per folder, and prints the router reports from the last 7 days. Replaces six DashCam jobs, now in `Old/`. |
 
 ## Status/Monitoring
 
@@ -72,12 +36,11 @@ An index of the scripts in this folder and their documentation. Each script has 
 | `DNSSEC - StatusFile.sh` | [DNSSEC - StatusFile.md](DNSSEC%20-%20StatusFile.md) | Copies DNSSEC/DNS health-check report files from a remote host to the NAS, displays today's dated report via `more`, then deletes the local copy of that report. |
 | `Web-Stat.sh` | [Web-Stat.md](Web-Stat.md) | Copies web status HTML reports from a remote host to `/volume1/Dragic/Rap/Web_Status/`. |
 
-
 ---
 
 ## Notes
 
-- **Destructive/irreversible scripts:** The `-delete` find operations (`Thumbs.db files - Delete.sh`, `Tilde files - Delete.sh`, `bak files - Delete.sh`, `tmp files - Delete.sh`); `Delete the oldest backups - Count 3.sh` and `Delete FTP DashCam 30 over days.sh` (prune files/folders based on age or retention count); `Copy USB - Devices.sh` / `Copy USB - Log.sh`, which remove the source files/directory after copying; and `DNSSEC - StatusFile.sh`, which deletes its own local copy of today's report after displaying it (though the report is re-copyable from the remote host on the next run). Note that `Two or more spaces in filename - Delete.sh` actually renames files rather than deleting them, and `FileDelete - Router - DashCam.sh` despite its name only displays matching files' contents and does not delete anything.
-- **Volume mismatch:** `tmp files - Find.sh` targets `/volume1/Dragic` while `tmp files - Delete.sh` targets `/volume2/Dragic` — a different volume than its Find counterpart. This looks like a likely copy/paste bug rather than an intentional design choice, and is worth verifying before relying on the Delete script to clean up what the Find script reports.
-- **Combined jobs that delete:** `Oprydning - Delete.sh` (`MODE=clean`, deletes junk files with `rm` and renames names with double spaces), `Oprydning - DashCam.sh` (deletes recordings older than 30 days) and `Backup USB Disk.sh` (`--remove-source-files` on the USB drive). The NAS job `Oprydning - Delete` still had `MODE=find` in the config backup of 2026-10-06 - update it there as well.
-- A `Synology/Old/` subfolder exists containing near-duplicate/deprecated-looking versions of some of these scripts. It is indexed separately in its own Overview.md and is not covered here.
+- **Root:** the scripts are run by DSM's Task Scheduler, and the user is chosen per task there. None of the scripts has its own root check or calls `sudo`; the ones that delete, or that read every share, are meant to run as `root`.
+- **Destructive/irreversible scripts:** `Oprydning - Delete.sh` (`MODE=clean`, deletes junk files with `rm` and renames names with double spaces), `Oprydning - DashCam.sh` (deletes recordings older than 30 days), `Backup USB Disk.sh` (`--remove-source-files` on the USB drive), `Delete the oldest backups - Count 3.sh` (keeps only the 3 newest subfolders per backup folder), and `DNSSEC - StatusFile.sh`, which deletes its own local copy of today's report after displaying it (the report is copied again from the remote host on the next run).
+- **NAS and git can differ:** the NAS job `Oprydning - Delete` still had `MODE=find` in the config backup of 2026-10-06 - update it there as well. `nas-dss-check.sh` in the `Linux-Scripts` repository compares a DSM export with this folder.
+- **`Old/`:** scripts that are no longer scheduled, or that were replaced by the combined jobs above, live in [Old/](Old/) and are indexed in [Old/Overview.md](Old/Overview.md).

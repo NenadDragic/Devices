@@ -21,5 +21,5 @@ An index of the scripts in this folder and their documentation. Each script has 
 
 ## Notes
 
-- `Crontab_Backup.sh` is the only script here that requires root for full functionality — without it, it silently restricts itself to the current user's own crontab and skips system cron even if `-s` is passed.
+- **Root:** `Install.sh` and `Update.sh` check for root (`id -u`) and exit with `FEJL: Scriptet skal køres som root.` otherwise, since `opkg` needs it. `Crontab_Backup.sh` runs without root too, but then silently restricts itself to the current user's own crontab and skips system cron even if `-s` is passed.
 - `Install.sh` contains commented-out `scp` commands referencing two different router IPs (`192.168.8.1` and `192.168.1.1`) as manual/reference steps — not executed by the script itself.

@@ -4,6 +4,8 @@ This script downloads new photo files from the router's web-exposed `/DCIM/Photo
 
 ## How it works
 
+Before anything else, the script sources the shared `lib/require_tools.sh` (found by walking up from the script's own folder) and stops with an `apt install` hint if any of these are missing: `wget`. It also stops if `lib/require_tools.sh` itself is not found.
+
 1. Sets configuration: target device IP (`192.168.1.254`), remote photo path, local download directory (`/mnt/sda1/DCIM/Photo`), and a PID lock file path.
 2. Installs `EXIT`/`SIGTERM`/`SIGINT` traps that clean up the PID file on any exit path.
 3. Checks the PID file: if another instance of this exact script is already running, it exits; if the PID file is stale (process gone or belongs to a different command), it removes the stale file and continues.
@@ -17,6 +19,17 @@ Intended to run periodically (e.g. via cron) on the GL.iNet router to pull new D
 
 ```shell
 #!/bin/bash
+# --- Dependency check (auto-inserted) ---
+_d="$(cd "$(dirname "${BASH_SOURCE[0]:-$0}")" && pwd)"
+while [ "$_d" != "/" ] && [ ! -f "$_d/lib/require_tools.sh" ]; do _d="$(dirname "$_d")"; done
+if [ ! -f "$_d/lib/require_tools.sh" ]; then
+    echo "FEJL: Kunne ikke finde lib/require_tools.sh (delt dependency-checker)." >&2
+    exit 1
+fi
+# shellcheck source=/dev/null
+source "$_d/lib/require_tools.sh"
+unset _d
+require_tools wget
 
 # === Konfiguration ===
 # IP-adresse eller værtsnavn for enheden, hvorfra filer skal downloades
