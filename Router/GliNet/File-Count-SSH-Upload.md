@@ -4,8 +4,6 @@ This is the router's daily orchestration script: it runs the SD card and DashCam
 
 ## How it works
 
-Before anything else, the script sources the shared `lib/require_tools.sh` (found by walking up from the script's own folder) and stops with an `apt install` hint if any of these are missing: `sudo`, `sshpass`, `rsync`, `ssh`. It also stops if `lib/require_tools.sh` itself is not found.
-
 1. For each of three logs (`File-Count-SD`, `File-Count-DashCam`, `File-Delete`), creates today's log file under `/root/<name>/<today>.txt` if it doesn't exist, or appends a timestamped note if it does.
 2. Runs the corresponding script (`Count_Files_SD.sh`, `Count_Files_DashCam.sh`, `Delete_10Days_Old_Files.sh`) and appends its output to that day's log file.
 3. Contains a commented-out block showing an earlier `sshpass`/`rsync` approach for uploading the log folders.
@@ -17,18 +15,6 @@ Intended to run daily (e.g. via cron) on the GL.iNet router as the main schedule
 
 ```shell
 #!/bin/bash
-# --- Dependency check (auto-inserted) ---
-_d="$(cd "$(dirname "${BASH_SOURCE[0]:-$0}")" && pwd)"
-while [ "$_d" != "/" ] && [ ! -f "$_d/lib/require_tools.sh" ]; do _d="$(dirname "$_d")"; done
-if [ ! -f "$_d/lib/require_tools.sh" ]; then
-    echo "FEJL: Kunne ikke finde lib/require_tools.sh (delt dependency-checker)." >&2
-    exit 1
-fi
-# shellcheck source=/dev/null
-source "$_d/lib/require_tools.sh"
-unset _d
-require_tools sudo sshpass rsync "ssh:openssh-client"
-
 
 #
 # SD Card

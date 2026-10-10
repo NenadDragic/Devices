@@ -1,16 +1,4 @@
 #!/bin/bash
-# --- Dependency check (auto-inserted) ---
-_d="$(cd "$(dirname "${BASH_SOURCE[0]:-$0}")" && pwd)"
-while [ "$_d" != "/" ] && [ ! -f "$_d/lib/require_tools.sh" ]; do _d="$(dirname "$_d")"; done
-if [ ! -f "$_d/lib/require_tools.sh" ]; then
-    echo "FEJL: Kunne ikke finde lib/require_tools.sh (delt dependency-checker)." >&2
-    exit 1
-fi
-# shellcheck source=/dev/null
-source "$_d/lib/require_tools.sh"
-unset _d
-require_tools wget nmap
-
 # === Konfiguration ===
 # IP-adresse eller værtsnavn for enheden, hvorfra filer skal downloades
 target_ip="192.168.1.254"
@@ -141,7 +129,7 @@ if [ $? -ne 0 ]; then
 fi
 
 # Tjek om port 21 er åben
-# (nmap-tilstedeværelse er allerede sikret af require_tools ovenfor)
+# Bemærk: nmap skal være installeret på systemet (se System/Install.sh).
 echo "Kontrollerer om port 21 (FTP) er åben på $target_ip..."
     if nmap -PN -p 21 "$target_ip" | grep -q "21/tcp open"; then # -PN for at undgå host discovery hvis ICMP er blokeret
         echo "Port 21 er åben på $target_ip. Fortsætter med at hente MP4 filer via HTTP."

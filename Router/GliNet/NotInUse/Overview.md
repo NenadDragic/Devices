@@ -24,5 +24,4 @@ An index of the scripts in this folder and their documentation. Each script has 
 ## Notes
 
 - **Root:** written to run as `root` on the router. None has its own root check; `Backup_IP.sh`, `Router-NAS-Movie.sh` and `Router-NAS-Movie-Parking.sh` call `sudo` for `sshpass`/`rsync`.
-- None of these scripts has the shared `lib/require_tools.sh` dependency check that the active scripts have.
 - The two download scripts can overlap with themselves less safely than the active ones: their duplicate-run check greps `ps` output instead of using a PID file.

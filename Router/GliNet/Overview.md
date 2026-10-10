@@ -41,7 +41,7 @@ An index of the scripts in this folder and their documentation. Each script has 
 ## Notes
 
 - **Root:** the scripts run as `root` on the router, normally from cron (see `System/crontab.txt`). None has its own root check. `Backup.sh`, `File-Count-SSH-Upload.sh`, `Router-NAS-Movie-RO.sh` and `Router-NAS-Pictures.sh` call `sudo` for `sshpass`/`rsync`.
-- **Dependency check:** every script except `Delete_10Days_Old_Files.sh` starts by sourcing the shared `lib/require_tools.sh`, found by walking up from the script's own folder, and exits if that file is not found. The `lib` folder must therefore exist above the scripts on the router too, and the install hint it prints is for `apt`, not the router's `opkg`.
+- **No dependency check:** the router scripts do not use the shared `lib/require_tools.sh`. The extra tools they need (`sshpass`, `rsync`, `nmap`) are installed with `System/Install.sh`.
 - **Destructive:** `Delete_10Days_Old_Files.sh` deletes files by age with no confirmation; `File-Count-SSH-Upload.sh` runs it daily.
 - **Password handling:** the upload scripts read the NAS password from a file under `/root/Adm/` and pass it to `sshpass` through a named pipe at `/tmp/pw_pipe`; the password itself is not in git.
 - Comments and console output are partly in Danish.

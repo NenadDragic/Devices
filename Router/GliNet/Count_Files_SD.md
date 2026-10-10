@@ -4,8 +4,6 @@ This script prints a status report for the router's SD card: photo/video counts 
 
 ## How it works
 
-Before anything else, the script sources the shared `lib/require_tools.sh` (found by walking up from the script's own folder) and stops with an `apt install` hint if any of these are missing: `uptime`, `ip`. It also stops if `lib/require_tools.sh` itself is not found.
-
 1. Prints a header and the router's `uptime`.
 2. Counts files in `/mnt/sda1/DCIM/Photo`, `/mnt/sda1/DCIM/Movie`, `/mnt/sda1/DCIM/Movie/RO`, and `/mnt/sda1/DCIM/Movie/Parking`, printing each count.
 3. Prints disk usage via `df -h`.
@@ -17,18 +15,6 @@ Run this script on the GL.iNet router to get a quick overview of the DashCam SD 
 
 ```shell
 #!/bin/bash
-# --- Dependency check (auto-inserted) ---
-_d="$(cd "$(dirname "${BASH_SOURCE[0]:-$0}")" && pwd)"
-while [ "$_d" != "/" ] && [ ! -f "$_d/lib/require_tools.sh" ]; do _d="$(dirname "$_d")"; done
-if [ ! -f "$_d/lib/require_tools.sh" ]; then
-    echo "FEJL: Kunne ikke finde lib/require_tools.sh (delt dependency-checker)." >&2
-    exit 1
-fi
-# shellcheck source=/dev/null
-source "$_d/lib/require_tools.sh"
-unset _d
-require_tools "uptime:procps" "ip:iproute2"
-
 files_count=0
 
 echo '*****************************************'

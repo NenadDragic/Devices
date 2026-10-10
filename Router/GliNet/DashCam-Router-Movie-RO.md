@@ -4,13 +4,11 @@ This script downloads new "RO" (protected/locked) DashCam video files from the r
 
 ## How it works
 
-Before anything else, the script sources the shared `lib/require_tools.sh` (found by walking up from the script's own folder) and stops with an `apt install` hint if any of these are missing: `wget`, `nmap`. It also stops if `lib/require_tools.sh` itself is not found.
-
 1. Sets configuration: target device IP (`192.168.1.254`), remote video path, local download directory (`/mnt/sda1/DCIM/Movie/RO`), and a PID lock file path.
 2. Installs `EXIT`/`SIGTERM`/`SIGINT` traps that clean up the PID file on any exit path.
 3. Checks the PID file: if another instance of this exact script is already running, it exits; if the PID file is stale (process gone or belongs to a different command), it removes the stale file and continues.
 4. Writes its own PID to the lock file and ensures the download directory exists.
-5. Checks with `nmap` whether port 21 (FTP) is open on the target. `nmap` is required by the dependency check, so there is no longer a fallback path for a missing `nmap`.
+5. Checks with `nmap` whether port 21 (FTP) is open on the target, as an informational check, then proceeds to download either way. `nmap` must be installed (it is in `System/Install.sh`); if it is missing, the check reports the port as not open and the download still runs.
 6. Fetches the HTML directory listing via `wget`, extracts `.MP4` filenames matching the DashCam naming pattern with `grep`/`sed`, and downloads any file not already present locally.
 7. Exits 0 on completion; the `EXIT` trap logs the final status and removes the PID file.
 
@@ -20,18 +18,6 @@ Intended to run periodically (e.g. via cron) on the GL.iNet router to pull prote
 
 ```shell
 #!/bin/bash
-# --- Dependency check (auto-inserted) ---
-_d="$(cd "$(dirname "${BASH_SOURCE[0]:-$0}")" && pwd)"
-while [ "$_d" != "/" ] && [ ! -f "$_d/lib/require_tools.sh" ]; do _d="$(dirname "$_d")"; done
-if [ ! -f "$_d/lib/require_tools.sh" ]; then
-    echo "FEJL: Kunne ikke finde lib/require_tools.sh (delt dependency-checker)." >&2
-    exit 1
-fi
-# shellcheck source=/dev/null
-source "$_d/lib/require_tools.sh"
-unset _d
-require_tools wget nmap
-
 # === Konfiguration ===
 # IP-adresse eller værtsnavn for enheden, hvorfra filer skal downloades
 target_ip="192.168.1.254"
@@ -162,7 +148,7 @@ if [ $? -ne 0 ]; then
 fi
 
 # Tjek om port 21 er åben
-# (nmap-tilstedeværelse er allerede sikret af require_tools ovenfor)
+# Bemærk: nmap skal være installeret på systemet (se System/Install.sh).
 echo "Kontrollerer om port 21 (FTP) er åben på $target_ip..."
     if nmap -PN -p 21 "$target_ip" | grep -q "21/tcp open"; then # -PN for at undgå host discovery hvis ICMP er blokeret
         echo "Port 21 er åben på $target_ip. Fortsætter med at hente MP4 filer via HTTP."
