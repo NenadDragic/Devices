@@ -2,7 +2,7 @@
 
 Runs on the Synology NAS as one DSM scheduled task that handles the USB backup disk from start to finish. It moves all backup folders from the USB disk to `NetBackup`, keeps the newest backups in each folder and deletes the rest, optionally deletes old log files, and finishes with a disk usage report. It replaces the three older DSM tasks "Backup USB Disk", "Delete the oldest backups - Count 3" and "Disk Used size - NetBackup".
 
-This is the file that lives at `/volume1/root-scripts/USB_Copy_Clean_Delete.sh` on the NAS. It is called by [`../USB_Copy_Clean_Delete.sh`](../USB_Copy_Clean_Delete.md), the DSM task command. The same file (v2.5) is also kept in the `Linux-Scripts` repository at `Synology/USB_Copy_Clean_Delete.sh`; keep the two copies in sync.
+This is the file that lives at `/volume1/root-scripts/USB_Copy_Clean_Delete.sh` on the NAS. It is called by [`../USB_Copy_Clean_Delete.sh`](../USB_Copy_Clean_Delete.md), the DSM task command. It used to be kept in the `Linux-Scripts` repository as well; this is now the only copy.
 
 ---
 

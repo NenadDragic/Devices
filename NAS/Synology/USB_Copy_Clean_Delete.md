@@ -1,6 +1,6 @@
 # USB_Copy_Clean_Delete
 
-Wrapper for the DSM task that runs `/volume1/root-scripts/USB_Copy_Clean_Delete.sh` on the NAS. It sets the parameters as environment variables and calls the real script. The real script is in [`root-scripts/USB_Copy_Clean_Delete.sh`](root-scripts/USB_Copy_Clean_Delete.md) (an identical copy is also in the `Linux-Scripts` repository).
+Wrapper for the DSM task that runs `/volume1/root-scripts/USB_Copy_Clean_Delete.sh` on the NAS. It sets the parameters as environment variables and calls the real script. The real script is in [`root-scripts/USB_Copy_Clean_Delete.sh`](root-scripts/USB_Copy_Clean_Delete.md).
 
 > **WARNING:** The file contains two blocks - `MODE=Dryrun` and then `MODE=Run` - with nothing between them. Run as-is, it does a dry run and then **immediately a real run**, which moves data off the USB disk and deletes old backups. The blocks are meant as the commands for two separate DSM tasks (one dry run, one real run); paste only the block you want into each task.
 

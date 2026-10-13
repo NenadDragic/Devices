@@ -15,5 +15,4 @@ The scripts in this folder are stored as files in `/volume1/root-scripts/` on th
 
 - **Safe defaults:** both scripts default to their non-destructive mode (`find` / `Dryrun`) when the DSM task does not set `MODE`.
 - **Run as root:** `USB_Copy_Clean_Delete.sh` checks it and exits with code `2` otherwise. `Oprydning.sh` has no check, but `clean` needs write access to the whole `Dragic` share.
-- **Copy in Linux-Scripts:** `USB_Copy_Clean_Delete.sh` is also in the `Linux-Scripts` repository (`Synology/`), currently identical (v2.5). Keep the two in sync.
 - **Deploying:** after changing a script here, copy it to `/volume1/root-scripts/` on the NAS - the DSM tasks run the copy on the NAS, not the one in git.
