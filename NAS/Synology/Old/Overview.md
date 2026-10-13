@@ -1,19 +1,29 @@
 # Old Scripts Overview
 
-An index of the scripts in this folder and their documentation. Each script has a matching `.md` file (same base name) describing usage, configuration, step-by-step behavior, and notable gotchas.
+An index of the scripts in this folder and their documentation. Each script listed below has a matching `.md` file (same base name) describing usage, configuration, step-by-step behavior, and notable gotchas.
 
-This `Old` subfolder holds Synology NAS Task Scheduler scripts that are no longer in use. Most were replaced by the combined jobs in the parent [`Synology`](../Overview.md) folder (`Oprydning - Find.sh`, `Oprydning - Delete.sh`, `Oprydning - DashCam.sh` and `Backup USB Disk.sh`); the rest are simply no longer scheduled.
+This `Old` subfolder holds Synology NAS Task Scheduler scripts that are no longer in use. Most were replaced by jobs in the parent [`Synology`](../Overview.md) folder (`Oprydning - Find.sh`, `Oprydning - Delete.sh`, `Oprydning - DashCam.sh` and `Hent - Loppe.sh`); the rest are simply no longer scheduled.
 
 ---
 
 ## Backup & Copy
 
-Replaced by `Backup USB Disk.sh`.
+`Copy USB - Devices.sh` and `Copy USB - Log.sh` were replaced by `Backup USB Disk.sh`, which is itself no longer scheduled. `Loppe files Copy.sh` was replaced by `Hent - Loppe.sh` in the parent folder.
 
 | Script | Doc | Summary |
 | --- | --- | --- |
-| `Copy USB - Devices.sh` | [Copy USB - Devices.md](Copy%20USB%20-%20Devices.md) | Copies all files from a USB drive to `/volume1/NetBackup/`, removing source files after transfer, then cleans up empty directories and the source share. |
-| `Copy USB - Log.sh` | [Copy USB - Log.md](Copy%20USB%20-%20Log.md) | Copies log files from a USB drive to `/volume1/NetBackup/Log/`, removing the source files after transfer, then deletes the source directory. |
+| `Backup USB Disk.sh` | [Backup USB Disk.md](Backup%20USB%20Disk.md) | Moves every top-level folder from the USB drive to `/volume1/NetBackup/`: copies first, deletes from USB only files that are identical in NetBackup, then reports anything left behind. |
+| `Copy USB - Devices.sh` | [Copy USB - Devices.md](Copy%20USB%20-%20Devices.md) | Copies all files from a USB drive to `/volume1/NetBackup/`, removing source files after transfer, then runs an unconditional `rm -rf` on the whole USB share - files that failed to transfer are deleted too. |
+| `Copy USB - Log.sh` | [Copy USB - Log.md](Copy%20USB%20-%20Log.md) | Copies log files from a USB drive to `/volume1/NetBackup/Log/`, removing the source files after transfer, then runs an unconditional `rm -rf` on the source folder - files that failed to transfer are deleted too. |
+| `Loppe files Copy.sh` | [Loppe files Copy.md](Loppe%20files%20Copy.md) | Copies the `Loppe` directory from a remote host to the NAS, then lists the destination contents. |
+| `Delete the oldest backups - Count 3.sh` | [Delete the oldest backups - Count 3.md](Delete%20the%20oldest%20backups%20-%20Count%203.md) | Loops through a list of backup folders and deletes all subdirectories except the 3 newest in each. |
+
+## Disk Usage
+
+| Script | Doc | Summary |
+| --- | --- | --- |
+| `Disk Used size - Dragic.sh` | [Disk Used size - Dragic.md](Disk%20Used%20size%20-%20Dragic.md) | Shows disk usage for `/volume1/Dragic/` up to 1 directory level deep, then prints the total. |
+| `Disk Used size - NetBackup.sh` | [Disk Used size - NetBackup.md](Disk%20Used%20size%20-%20NetBackup.md) | Shows disk usage for `/volume1/NetBackup/` up to 2 directory levels deep, then prints the total. |
 
 ## DashCam
 
@@ -34,16 +44,16 @@ Replaced by `Oprydning - Find.sh` and `Oprydning - Delete.sh`.
 
 | Script | Doc | Summary |
 | --- | --- | --- |
-| `Bak files - Find.sh` | [Bak files - Find.md](Bak%20files%20-%20Find.md) | Finds all files in the `/volume1/Dragic` directory that are named `*.bak`. |
-| `Bak files - Delete.sh` | [Bak files - Delete.md](Bak%20files%20-%20Delete.md) | Deletes all files in the `/volume1/Dragic` directory that end with the `.bak` extension. |
-| `TMP files - Find.sh` | [TMP files - Find.md](TMP%20files%20-%20Find.md) | Finds all files in the `/volume1/Dragic` directory that end with the `.tmp` extension. |
-| `TMP files - Delete.sh` | [TMP files - Delete.md](TMP%20files%20-%20Delete.md) | Deletes all files in the `/volume1/Dragic` directory that end with the `.tmp` extension. |
+| `bak files - Find.sh` | [bak files - Find.md](bak%20files%20-%20Find.md) | Finds all files in the `/volume1/Dragic` directory that are named `*.bak`. |
+| `bak files - Delete.sh` | [bak files - Delete.md](bak%20files%20-%20Delete.md) | Deletes all files in the `/volume1/Dragic` directory that end with the `.bak` extension. |
+| `tmp files - Find.sh` | [tmp files - Find.md](tmp%20files%20-%20Find.md) | Finds all files in the `/volume1/Dragic` directory that end with the `.tmp` extension. |
+| `tmp files - Delete.sh` | [tmp files - Delete.md](tmp%20files%20-%20Delete.md) | Deletes all files in the `/volume2/Dragic` directory (note: `volume2`, not `volume1`) that end with the `.tmp` extension. |
 | `Thumbs.db files - Find.sh` | [Thumbs.db files - Find.md](Thumbs.db%20files%20-%20Find.md) | Finds all `Thumbs.db` files under `/volume1/Dragic` (Windows thumbnail cache files often left behind on network shares). |
 | `Thumbs.db files - Delete.sh` | [Thumbs.db files - Delete.md](Thumbs.db%20files%20-%20Delete.md) | Deletes all `Thumbs.db` files under `/volume1/Dragic`. |
 | `Tilde files - Find.sh` | [Tilde files - Find.md](Tilde%20files%20-%20Find.md) | Finds all files under `/volume1/Dragic` that start with a tilde (`~`) and have any extension. |
 | `Tilde files - Delete.sh` | [Tilde files - Delete.md](Tilde%20files%20-%20Delete.md) | Deletes all files under `/volume1/Dragic` that start with a tilde (`~`) and have any extension. |
-| `Two or more spaces in filename - Find.sh` | [Two or more spaces in filename - Find.md](Two%20or%20more%20spaces%20in%20filename%20-%20Find.md) | Finds all files under `/volume1/Dragic` that have two or more consecutive spaces in their names. |
-| `Two or more spaces in filename - Delete.sh` | [Two or more spaces in filename - Delete.md](Two%20or%20more%20spaces%20in%20filename%20-%20Delete.md) | Finds files with two or more consecutive spaces in their names and renames them to collapse the double spaces to one — despite the "Delete" name, it renames rather than deletes. |
+| `Two or more spaces in filename - Find.sh` | [Two or more spaces in filename - Find.md](Two%20or%20more%20spaces%20in%20filename%20-%20Find.md) | Finds all files and folders under `/volume1/Dragic` that have two or more consecutive spaces in their names. |
+| `Two or more spaces in filename - Delete.sh` | [Two or more spaces in filename - Delete.md](Two%20or%20more%20spaces%20in%20filename%20-%20Delete.md) | Finds files and folders with two or more consecutive spaces in their names and renames them, replacing each pair of spaces with one (so three spaces become two, not one) — despite the "Delete" name, it renames rather than deletes. |
 
 ## Integrity Checks
 
@@ -72,6 +82,6 @@ Replaced by `Oprydning - Find.sh`.
 ## Notes
 
 - **Root:** these were DSM Task Scheduler scripts, where the user is chosen per task. `Copy USB - Devices.sh`, `Copy USB - Log.sh` and `Reboot.sh` call `sudo` themselves; none of the scripts has its own root check.
-- **Destructive/irreversible scripts:** the `-delete` find operations (`Bak files - Delete.sh`, `TMP files - Delete.sh`, `Thumbs.db files - Delete.sh`, `Tilde files - Delete.sh`), `Delete FTP DashCam 30 over days.sh`, the two `Copy USB` scripts (remove the source after copying) and `Reboot.sh`.
+- **Destructive/irreversible scripts:** the `-delete` find operations (`bak files - Delete.sh`, `tmp files - Delete.sh`, `Thumbs.db files - Delete.sh`, `Tilde files - Delete.sh`), `Two or more spaces in filename - Delete.sh` (renames), `Delete FTP DashCam 30 over days.sh`, `Delete the oldest backups - Count 3.sh` (`rm -rf` of all but the 3 newest subfolders), `Backup USB Disk.sh` (`--remove-source-files` on the USB drive), the two `Copy USB` scripts (remove the source after copying, then `rm -rf` it) and `Reboot.sh`.
 - **Secret in git:** `DDNS - Simply.sh` has a Simply.com API key in clear text in its URL. It is in git history and should be treated as exposed.
 - The two DDNS scripts are not interchangeable: one calls the Simply.com DDNS API, the other a cPanel webcall on `dragic.com`.

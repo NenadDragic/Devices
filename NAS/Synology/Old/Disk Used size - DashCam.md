@@ -5,7 +5,7 @@ Shows disk usage for `/volume1/DashCam/` up to 1 directory level deep, then prin
 ## Command
 
 ```bash
-(du -ha --max-depth=1 --exclude='#recycle' --exclude='@eaDir' --exclude='Log' /volume1/DashCam/ 2>/dev/null | grep -vE "total$\|/volume1/DashCam/$" | sort -k2); du -shc /volume1/DashCam/ 2>/dev/null
+(du -ha --max-depth=1 --exclude='#recycle' --exclude='@eaDir' --exclude='Log' /volume1/DashCam/ 2>/dev/null | grep -vE "total$|/volume1/DashCam/$" | sort -k2); du -shc /volume1/DashCam/ 2>/dev/null
 ```
 
 ## Options
@@ -21,7 +21,7 @@ Shows disk usage for `/volume1/DashCam/` up to 1 directory level deep, then prin
 | `2>/dev/null` | Suppress error messages |
 | `grep -vE "total$\|/volume1/DashCam/$"` | Remove the summary total and root path lines |
 | `sort -k2` | Sort output by path (second column) |
-| `-shc` (second `du`) | Print a grand total summary |
+| `-shc` (second `du`) | Print a grand total summary - without the excludes, so it includes `#recycle`, `@eaDir` and `Log` |
 
 ## Usage
 

@@ -9,7 +9,7 @@ The same script is used by `Oprydning - Find.sh`; only `MODE` differs.
 ## What it does
 
 1. Deletes `.bak`, `.tmp`, `Thumbs.db` and `~*.*` files that have not been modified for `MIN_AGE_MIN` minutes.
-2. Renames files and folders with two or more consecutive spaces so the spaces collapse to one. Names are handled deepest-first, so contents are renamed before their folder. If the new name already exists the item is skipped and reported.
+2. Renames files and folders with two or more consecutive spaces so the spaces collapse to one. `MIN_AGE_MIN` does not apply here - names are fixed regardless of age. Names are handled deepest-first, so contents are renamed before their folder. If the new name already exists the item is skipped and reported.
 3. `CORRUPT` and `INVALID` files are never deleted.
 
 `#recycle` and `@eaDir` are skipped.
@@ -20,7 +20,7 @@ The same script is used by `Oprydning - Find.sh`; only `MODE` differs.
 | --- | --- | --- |
 | `MODE` | `clean` | `clean` deletes and renames; `find` reports only |
 | `ROOT` | `/volume1/Dragic` | Share to clean |
-| `MIN_AGE_MIN` | `1440` | Only touch files not modified in the last 24 hours |
+| `MIN_AGE_MIN` | `1440` | Only delete files not modified in the last 24 hours (does not apply to the double-space renames) |
 
 ## Usage
 

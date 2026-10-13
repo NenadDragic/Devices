@@ -5,7 +5,7 @@ Shows disk usage for `/volume1/NetBackup/` up to 2 directory levels deep, then p
 ## Command
 
 ```bash
-(du -ha --max-depth=2 --exclude='#recycle' --exclude='@eaDir' --exclude='Log' /volume1/NetBackup/ 2>/dev/null | grep -vE "total$\|/volume1/NetBackup/$" | sort -k2); du -shc /volume1/NetBackup/ 2>/dev/null
+(du -ha --max-depth=2 --exclude='#recycle' --exclude='@eaDir' --exclude='Log' /volume1/NetBackup/ 2>/dev/null | grep -vE "total$|/volume1/NetBackup/$" | sort -k2); du -shc /volume1/NetBackup/ 2>/dev/null
 ```
 
 ## Options
@@ -21,7 +21,7 @@ Shows disk usage for `/volume1/NetBackup/` up to 2 directory levels deep, then p
 | `2>/dev/null` | Suppress error messages |
 | `grep -vE "total$\|/volume1/NetBackup/$"` | Remove the summary total and root path lines |
 | `sort -k2` | Sort output by path (second column) |
-| `-shc` (second `du`) | Print a grand total summary |
+| `-shc` (second `du`) | Print a grand total summary - without the excludes, so it includes `#recycle`, `@eaDir` and `Log` |
 
 ## Usage
 

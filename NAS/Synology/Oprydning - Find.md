@@ -24,7 +24,7 @@ The same script is used by `Oprydning - Delete.sh`; only `MODE` differs.
 | --- | --- | --- |
 | `MODE` | `find` | `find` reports only; `clean` deletes and renames (see `Oprydning - Delete.md`) |
 | `ROOT` | `/volume1/Dragic` | Share to scan |
-| `MIN_AGE_MIN` | `1440` | In `clean` mode, only touch files not modified in the last 24 hours |
+| `MIN_AGE_MIN` | `1440` | In `clean` mode, only delete files not modified in the last 24 hours (renames ignore it) |
 
 ## Usage
 

@@ -1,6 +1,8 @@
 # Web-Stat
 
-Copies web status HTML reports from a remote host to the NAS.
+Copies web status HTML reports from a remote host to the NAS. Version 1.1 (2026-10-06).
+
+> **Replaced by [`Hent - DNSSEC and Web-Stat.sh`](Hent%20-%20DNSSEC%20and%20Web-Stat.md)**, which fetches the same reports with `rsync` and creates the destination folder if needed.
 
 ## Command
 

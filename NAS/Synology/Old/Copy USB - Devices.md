@@ -1,6 +1,8 @@
 # Copy USB - Devices
 
-Copies all files from a USB drive to `/volume1/NetBackup/`, removing source files after transfer, then cleans up empty directories and the source share.
+Copies all files from a USB drive to `/volume1/NetBackup/`, removing source files after transfer, removes empty directories under `usbshare/NetBackup/`, then deletes the whole USB share with `rm -rf`.
+
+> **Warning:** the final `rm -rf /volumeUSB1/usbshare/` is unconditional. It also runs if `rsync` failed, so any file that was not transferred is deleted from the USB drive.
 
 ## Command
 
@@ -22,8 +24,8 @@ sudo rm -rf /volumeUSB1/usbshare/
 | `-v` | Verbose output |
 | `--progress` | Show transfer progress |
 | `--remove-source-files` | Delete source files after successful transfer |
-| `find -type d -empty -delete` | Remove empty directories left after transfer |
-| `rm -rf` | Remove the now-empty source share directory |
+| `find -type d -empty -delete` | Remove empty directories under `/volumeUSB1/usbshare/NetBackup/` only |
+| `rm -rf` | Remove the whole source share, whether or not it is empty |
 
 ## Usage
 

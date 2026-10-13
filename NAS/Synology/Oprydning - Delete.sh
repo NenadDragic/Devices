@@ -6,8 +6,8 @@
 
 # Oprydning i Dragic - én gennemsøgning af sharet pr. kørsel
 # Samme script i begge jobs - kun MODE er forskellig:
-# MODE=find   viser fund, ændrer intet
-# MODE=clean  sletter junk-filer og retter dobbelte mellemrum
+#   MODE=find   viser fund, ændrer intet
+#   MODE=clean  sletter junk-filer og retter dobbelte mellemrum
 MODE=clean
 ROOT=/volume1/Dragic
 MIN_AGE_MIN=1440   # clean rører kun filer, der ikke er ændret de sidste 24 timer

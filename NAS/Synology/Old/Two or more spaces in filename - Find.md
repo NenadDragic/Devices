@@ -1,6 +1,6 @@
 # Two or more spaces in filename - Find
 
-Finds all files under `/volume1/Dragic` that have two or more consecutive spaces in their names.
+Finds all files and folders under `/volume1/Dragic` that have two or more consecutive spaces in their names (there is no `-type f`, so folders are listed too).
 
 ## Command
 

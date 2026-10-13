@@ -1,6 +1,6 @@
 #!/bin/bash
-# Version:      1.1
-# Date:         2026-04-13
+# Version:      1.2
+# Date:         2026-10-06
 # Test Run:     2026-04-13
 # Developper:   Nenad(a)dragic(.)com
 

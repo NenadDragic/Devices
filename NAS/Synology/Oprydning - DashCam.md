@@ -4,8 +4,8 @@ Weekly DashCam cleanup and report in one job. Replaces six separate jobs: `Delet
 
 ## Steps
 
-1. **Delete old recordings** - deletes files under `/volume1/DashCam` older than `KEEP_DAYS`, skipping `#recycle` and any folder in `PROTECT`, and prints how many files and how much space was freed.
-2. **Content** - prints the file count and size of each folder in `FOLDERS`, plus the total size of the share.
+1. **Delete old recordings** - deletes all files under `/volume1/DashCam` older than `KEEP_DAYS`, skipping only `#recycle` and any folder in `PROTECT`, and prints how many files and how much space was freed. This includes old files in `@eaDir` and in the router report folders (`REPORTS`).
+2. **Content** - prints the file count and size of each folder in `FOLDERS`, plus the total size of the share (without `#recycle` and `@eaDir`). Counts and sizes cover only the folder's own files, not subfolders - `Movie` does not include `Movie/RO` or `Movie/Parking`.
 3. **Router reports** - prints the router report files from the last `REPORT_DAYS` days for each folder in `REPORTS`, with a warning if none arrived.
 
 ## Configuration

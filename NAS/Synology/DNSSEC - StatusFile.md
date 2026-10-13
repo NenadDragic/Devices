@@ -1,6 +1,8 @@
 # DNSSEC - StatusFile
 
-Pulls the latest DNSSEC/DNS health-check report files from a remote host down to the NAS, displays today's report, then deletes the local copy of that report.
+Pulls the latest DNSSEC/DNS health-check report files from a remote host down to the NAS, displays today's report, then deletes the local copy of that report. Version 1.1 (2026-10-06).
+
+> **Replaced by [`Hent - DNSSEC and Web-Stat.sh`](Hent%20-%20DNSSEC%20and%20Web-Stat.md)**, which fetches the same files (plus the Web-Stat reports) with `rsync`, creates missing folders and exits with an error code when something fails.
 
 ---
 
@@ -45,7 +47,7 @@ Runs `rm "/volume1/Dragic/Rap/DNS_Status/Sundhedscheck-$(date +\%F).txt"`, delet
 
 - Not idempotent in a meaningful sense, but safe to re-run: each run just re-copies whatever `.txt` files currently exist remotely, overwriting the local copies (except today's report, which is deleted at the end of each run — see below).
 - Deletes today's local report after displaying it: only the dated `Sundhedscheck-<YYYY-MM-DD>.txt` file is removed; the other copied `.txt` files and the `Old/` archive are left in place. Since the report is re-copied fresh from the remote host on the next run, this doesn't lose data as long as the remote copy still exists — but it does mean the NAS never accumulates a local history of daily reports outside of `Old/`.
-- `more` is a pager and blocks waiting for user input — this script is meant to be run interactively (e.g. at a terminal), not unattended via cron/Task Scheduler, unlike the "Copy ..." scripts elsewhere in this folder that end with a plain `ls`.
+- `more` is a pager, but when output is not a terminal (as under DSM Task Scheduler) it just prints the whole file like `cat` and does not wait for input, so the script works unattended. Run at an interactive terminal, it pages and waits for a key press.
 - No error handling: if either `scp` fails (host unreachable, no matching files, auth failure) the script continues on to the next step anyway; if today's report file doesn't exist yet, `more` will error out and the subsequent `rm` will also fail (harmlessly, since there's nothing to delete).
 - The remote host `10.0.0.214` is presumably where `Dns_Sundhedstjek.sh` (in the `Web_source` repo) runs and writes its `Sundhedscheck-*.txt` output under `/home/admina/DNSSEC/` — this script is the retrieval/viewing half of that workflow, not documented as a pair anywhere else.
 - Hardcoded values: remote host/IP (`10.0.0.214`), remote user (`admina`), and all NAS destination paths (`/volume1/Dragic/Rap/DNS_Status`, `.../Old`).

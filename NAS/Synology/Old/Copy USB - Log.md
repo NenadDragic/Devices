@@ -1,6 +1,8 @@
 # Copy USB - Log
 
-Copies log files from a USB drive to `/volume1/NetBackup/Log/`, removing the source files after transfer, then deletes the source directory.
+Copies log files from a USB drive to `/volume1/NetBackup/Log/`, removing the source files after transfer, then deletes the source directory with `rm -rf`.
+
+> **Warning:** the final `rm -rf /volumeUSB1/usbshare/Log/` is unconditional. It also runs if `rsync` failed, so any file that was not transferred is deleted from the USB drive.
 
 ## Command
 
@@ -20,7 +22,7 @@ sudo rm -rf /volumeUSB1/usbshare/Log/
 | `-v` | Verbose output |
 | `--progress` | Show transfer progress |
 | `--remove-source-files` | Delete source files after successful transfer |
-| `sudo rm -rf` | Remove the now-empty source directory |
+| `sudo rm -rf` | Remove the source directory, whether or not it is empty |
 
 ## Usage
 
