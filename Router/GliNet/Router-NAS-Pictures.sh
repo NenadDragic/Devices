@@ -1,4 +1,9 @@
 #!/bin/bash
+# Version:      1.0
+# Date:         2026-10-10
+# Test Run:
+# Developper:   Nenad(a)dragic(.)com
+
 # Backup the data
 #sudo rsync -av ~ -e "ssh -l Debian_Backup" nas.dragic.com::NetBackup/BackupData/Muddi-E750/$(date +%Y-%m-%d)
 

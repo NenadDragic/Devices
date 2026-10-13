@@ -1,6 +1,6 @@
 # File Count & SSH Upload - File-Count-SSH-Upload.sh
 
-This is the router's daily orchestration script: it runs the SD card and DashCam file-count scripts and the old-file cleanup script, logs their output to daily text files, then uploads the resulting log folders to the NAS over SFTP.
+This is the router's hourly orchestration script (cron runs it every hour; see `System/crontab.txt`): it runs the SD card and DashCam file-count scripts and the old-file cleanup script, logs their output to daily text files, then uploads the resulting log folders to the NAS with `rsync` over SSH.
 
 ## How it works
 
@@ -11,10 +11,14 @@ This is the router's daily orchestration script: it runs the SD card and DashCam
 
 ## Usage
 
-Intended to run daily (e.g. via cron) on the GL.iNet router as the main scheduled job that ties together file counting, cleanup logging, and NAS upload.
+Runs every hour from cron (`0 * * * *` in `System/crontab.txt`) on the GL.iNet router as the main scheduled job that ties together file counting, cleanup logging, and NAS upload.
 
 ```shell
 #!/bin/bash
+# Version:      1.0
+# Date:         2026-10-10
+# Test Run:
+# Developper:   Nenad(a)dragic(.)com
 
 #
 # SD Card
@@ -97,20 +101,20 @@ echo "$output" >> "$filename"
 #sshpass -v -f /root/Adm/pw.txt rsync -avz /root/File-Delete SFTP@nas.dragic.com:/volume1/Ftp/DashCam
 
 mkfifo /tmp/pw_pipe
-cat ../root/Adm/pw_nas.txt > /tmp/pw_pipe &
+cat ../root/Adm/pw_nas.txt > /tmp/pw_pipe & 
 sudo sshpass -f /tmp/pw_pipe sudo rsync -av /root/File-Count-SD -e "ssh -l Debian_Backup" nas.dragic.com::NetBackup/DashCam
 
 rm /tmp/pw_pipe
 
 
 mkfifo /tmp/pw_pipe
-cat ../root/Adm/pw_nas.txt > /tmp/pw_pipe &
+cat ../root/Adm/pw_nas.txt > /tmp/pw_pipe & 
 sudo sshpass -f /tmp/pw_pipe sudo rsync -av /root/File-Count-DashCam -e "ssh -l Debian_Backup" nas.dragic.com::NetBackup/DashCam
 
 rm /tmp/pw_pipe
 
 mkfifo /tmp/pw_pipe
-cat ../root/Adm/pw_nas.txt > /tmp/pw_pipe &
+cat ../root/Adm/pw_nas.txt > /tmp/pw_pipe & 
 sudo sshpass -f /tmp/pw_pipe sudo rsync -av /root/File-Delete -e "ssh -l Debian_Backup" nas.dragic.com::NetBackup/DashCam
 
 rm /tmp/pw_pipe

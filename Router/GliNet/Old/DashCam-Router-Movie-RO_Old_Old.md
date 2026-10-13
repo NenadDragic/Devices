@@ -4,7 +4,7 @@
 
 The file previously had a stray chat prompt pasted at the top and a malformed shebang (`!/bin/bash` missing its `#`), which meant it couldn't run; both have been cleaned up so the script now executes correctly.
 
-Downloads new "RO" DashCam video files from the router's web-exposed `/DCIM/Movie/RO` folder, guarding against overlapping runs with a `ps`-grep check, gated on an `nmap` port-21 check.
+Downloads new "RO" DashCam video files from the DashCam's (`192.168.1.254`) web-exposed `/DCIM/Movie/RO` folder, guarding against overlapping runs with a `ps`-grep check, gated on an `nmap` port-21 check.
 
 ## How it works
 
@@ -16,6 +16,10 @@ Downloads new "RO" DashCam video files from the router's web-exposed `/DCIM/Movi
 
 ```shell
 #!/bin/bash
+# Version:      1.0
+# Date:         2026-08-20
+# Test Run:
+# Developper:   Nenad(a)dragic(.)com
 
 # === Konfiguration ===
 # IP-adresse eller værtsnavn for enheden, hvorfra filer skal downloades

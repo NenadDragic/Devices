@@ -13,6 +13,10 @@ Rsyncs the router's home directory to a date-stamped folder on the NAS backup sh
 
 ```shell
 #!/bin/bash
+# Version:      1.0
+# Date:         2025-05-21
+# Test Run:
+# Developper:   Nenad(a)dragic(.)com
 
 # Backup the data
 #sudo rsync -av ~ -e "ssh -l Debian_Backup" 194.255.151.35::NetBackup/BackupData/Muddi-E750/$(date +%Y-%m-%d)

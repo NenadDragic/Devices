@@ -1,4 +1,9 @@
 #!/bin/sh
+# Version:      1.0
+# Date:         2026-09-14
+# Test Run:
+# Developper:   Nenad(a)dragic(.)com
+
 #
 # crontab_backup.sh — gemmer hver brugers crontab i sin egen fil.
 #

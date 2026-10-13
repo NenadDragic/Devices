@@ -9,7 +9,7 @@ POSIX `sh` script (runs on BusyBox ash/OpenWrt, dash, and bash) that saves each 
 3. Builds the list of users to back up: defaults to every user in `getent passwd` / `/etc/passwd`, plus any extra usernames found only as files in the spool directory (common on OpenWrt); `-u` overrides this to specific users (repeatable).
 4. If not running as root, restricts the backup to the current user only (root is required to read other users' crontabs) and disables `-s`.
 5. Creates the output directory (default `/root/Scripts/Crontab`, `chmod 700`) unless `-n` (dry-run) is set.
-6. For each user, reads their crontab via `crontab -l -u <user>`, falling back to reading the file directly from the spool directory if the `crontab` command isn't available. Users with no crontab, or whose crontab is only blank lines/comments, are skipped.
+6. For each user, reads their crontab via `crontab -l -u <user>`, falling back to reading the file directly from the spool directory if the `crontab` command isn't available or `crontab -l -u` fails. Users with no crontab, or whose crontab is only blank lines/comments, are skipped.
 7. Writes each non-empty crontab to `$OUTDIR/crontab_<user>_<YYYY-MM-DD>.txt` (`chmod 600`; the username is sanitized to `A-Za-z0-9._@-`, other characters become `_`). In dry-run mode, logs what would be written instead of writing anything.
 8. If `-s` is set, also concatenates `/etc/crontab` and `/etc/cron.d/*` (each prefixed with a `### <path>` header) into a single `crontab_system_<date>.txt`.
 9. If `-k DAYS` is greater than 0 (and not a dry-run), deletes backup files older than `DAYS` days from the output directory.

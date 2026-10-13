@@ -13,6 +13,10 @@ Syncs locally stored DashCam photos to the NAS over SFTP, gated on an `nmap` por
 
 ```shell
 #!/bin/bash
+# Version:      1.0
+# Date:         2024-03-07
+# Test Run:
+# Developper:   Nenad(a)dragic(.)com
 
 # Run the ls command and tell the shell to ignore hangups
 nohup ls &

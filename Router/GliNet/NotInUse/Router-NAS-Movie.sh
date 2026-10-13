@@ -1,4 +1,8 @@
 #!/bin/bash
+# Version:      1.0
+# Date:         2025-05-21
+# Test Run:
+# Developper:   Nenad(a)dragic(.)com
 
 mkfifo /tmp/pw_pipe
 cat ../root/Adm/pw_nas.txt > /tmp/pw_pipe & 

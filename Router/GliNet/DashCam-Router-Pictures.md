@@ -1,6 +1,6 @@
 # DashCam Router Pictures Download - DashCam-Router-Pictures.sh
 
-This script downloads new photo files from the router's web-exposed `/DCIM/Photo` folder to local storage, using a PID file to prevent overlapping runs.
+This script downloads new photo files from the DashCam's (`192.168.1.254`) web-exposed `/DCIM/Photo` folder to local storage, using a PID file to prevent overlapping runs.
 
 ## How it works
 
@@ -17,6 +17,11 @@ Intended to run periodically (e.g. via cron) on the GL.iNet router to pull new D
 
 ```shell
 #!/bin/bash
+# Version:      1.0
+# Date:         2026-10-10
+# Test Run:
+# Developper:   Nenad(a)dragic(.)com
+
 # === Konfiguration ===
 # IP-adresse eller værtsnavn for enheden, hvorfra filer skal downloades
 target_ip="192.168.1.254"

@@ -26,7 +26,7 @@ Kører `apt-get update -qq` for at hente den nyeste pakkeindeks fra de konfigure
 
 ### Step 2 – Vis status for hvert værktøj
 
-For hvert værktøj i `TOOLS`-listen (nederst i scriptet, som `pakkenavn:beskrivelse`) tjekkes:
+For hvert værktøj i `TOOLS`-listen (i toppen af scriptet, som `pakkenavn:beskrivelse`) tjekkes:
 
 - Installeret version via `dpkg-query -W -f='${Version}' <pakke>`.
 - Nyeste tilgængelige version via `apt-cache policy <pakke>` (`Candidate:`-linjen).

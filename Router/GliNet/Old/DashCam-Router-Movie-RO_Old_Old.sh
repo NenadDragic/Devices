@@ -1,4 +1,8 @@
 #!/bin/bash
+# Version:      1.0
+# Date:         2026-08-20
+# Test Run:
+# Developper:   Nenad(a)dragic(.)com
 
 # === Konfiguration ===
 # IP-adresse eller værtsnavn for enheden, hvorfra filer skal downloades

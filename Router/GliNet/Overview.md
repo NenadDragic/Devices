@@ -23,7 +23,7 @@ An index of the scripts in this folder and their documentation. Each script has 
 
 | Script | Doc | Summary |
 | --- | --- | --- |
-| `File-Count-SSH-Upload.sh` | [File-Count-SSH-Upload.md](File-Count-SSH-Upload.md) | The router's daily orchestration script: runs the SD card and DashCam file-count scripts and the old-file cleanup script, logs their output to daily text files, then uploads the log folders to the NAS over SSH. |
+| `File-Count-SSH-Upload.sh` | [File-Count-SSH-Upload.md](File-Count-SSH-Upload.md) | The router's hourly orchestration script (run every hour from cron): runs the SD card and DashCam file-count scripts and the old-file cleanup script, logs their output to daily text files, then uploads the log folders to the NAS over SSH. |
 | `Count_Files_SD.sh` | [Count_Files_SD.md](Count_Files_SD.md) | Prints a status report for the router's SD card: photo/video counts by folder, disk usage, and the `wwan0` interface's IP address. |
 | `Count_Files_DashCam.sh` | [Count_Files_DashCam.md](Count_Files_DashCam.md) | Queries the DashCam's web file listing over HTTP and prints a count of photos and videos in each folder. |
 | `Delete_10Days_Old_Files.sh` | [Delete_10Days_Old_Files.md](Delete_10Days_Old_Files.md) | Cleans up old files on the router's SD card and log folders: raw SD card files older than 10 days, and DashCam/log files older than 30 days. |
@@ -41,7 +41,7 @@ An index of the scripts in this folder and their documentation. Each script has 
 ## Notes
 
 - **Root:** the scripts run as `root` on the router, normally from cron (see `System/crontab.txt`). None has its own root check. `Backup.sh`, `File-Count-SSH-Upload.sh`, `Router-NAS-Movie-RO.sh` and `Router-NAS-Pictures.sh` call `sudo` for `sshpass`/`rsync`.
-- **No dependency check:** the router scripts do not use the shared `lib/require_tools.sh`. The extra tools they need (`sshpass`, `rsync`, `nmap`) are installed with `System/Install.sh`.
-- **Destructive:** `Delete_10Days_Old_Files.sh` deletes files by age with no confirmation; `File-Count-SSH-Upload.sh` runs it daily.
+- **No dependency check:** the router scripts do not use the shared `lib/require_tools.sh` (it lives in the Linux-Scripts repo and is not on the router). The extra tools they need (`sshpass`, `rsync`, `nmap`) are installed with `System/Install.sh`.
+- **Destructive:** `Delete_10Days_Old_Files.sh` deletes files by age with no confirmation; `File-Count-SSH-Upload.sh` runs it every hour, and cron also runs it on its own daily at 02:00 (see `System/crontab.txt`).
 - **Password handling:** the upload scripts read the NAS password from a file under `/root/Adm/` and pass it to `sshpass` through a named pipe at `/tmp/pw_pipe`; the password itself is not in git.
 - Comments and console output are partly in Danish.

@@ -1,4 +1,9 @@
 #!/usr/bin/env bash
+# Version:      1.0
+# Date:         2026-09-14
+# Test Run:
+# Developper:   Nenad(a)dragic(.)com
+
 # =============================================================================
 # Setup.sh
 # Installer mine mest brugte CLI-værktøjer på en Debian/Ubuntu-laptop.

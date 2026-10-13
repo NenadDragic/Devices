@@ -2,7 +2,7 @@
 
 **Deprecated** — superseded by [../DashCam-Router-Pictures.sh](../DashCam-Router-Pictures.md), which replaced the `ps`-based duplicate check with a proper PID-file lock and added trap-based cleanup. Kept here for reference.
 
-Earlier version that downloads new photo files from the router's web-exposed `/DCIM/Photo` folder, guarding against overlapping runs by grepping the process list instead of using a PID file.
+Earlier version that downloads new photo files from the DashCam's (`192.168.1.254`) web-exposed `/DCIM/Photo` folder, guarding against overlapping runs by grepping the process list instead of using a PID file.
 
 ## How it works
 
@@ -14,6 +14,10 @@ Earlier version that downloads new photo files from the router's web-exposed `/D
 
 ```shell
 #!/bin/bash
+# Version:      1.0
+# Date:         2025-05-21
+# Test Run:
+# Developper:   Nenad(a)dragic(.)com
 
 # === Konfiguration ===
 # IP-adresse eller værtsnavn for enheden, hvorfra filer skal downloades

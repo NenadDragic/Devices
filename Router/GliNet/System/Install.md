@@ -17,6 +17,10 @@ Run once on a fresh router setup to install dependencies, or re-run to refresh a
 
 ```shell
 #!/bin/bash
+# Version:      1.0
+# Date:         2026-10-10
+# Test Run:
+# Developper:   Nenad(a)dragic(.)com
 
 # opkg kræver root
 if [ "$(id -u)" -ne 0 ]; then
@@ -30,5 +34,5 @@ opkg list-upgradable | cut -f 1 -d ' ' | xargs opkg upgrade
 
 #scp *  root@192.168.8.1:/root/Scripts/Old
 
-#scp -r * root@192.168.1.1:/root
+#scp -r * root@192.168.1.1:/root 
 ```

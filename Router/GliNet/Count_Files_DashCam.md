@@ -14,6 +14,11 @@ Run this script to get a quick photo/video count directly from the DashCam's web
 
 ```shell
 #!/bin/bash
+# Version:      1.0
+# Date:         2026-10-10
+# Test Run:
+# Developper:   Nenad(a)dragic(.)com
+
 echo '************************************'
 echo '** DashCam kort ** DashCam kort **'
 echo '************************************'

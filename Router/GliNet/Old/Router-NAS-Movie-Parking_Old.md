@@ -1,6 +1,6 @@
 # Router to NAS Movie Parking Sync (Old) - Router-NAS-Movie-Parking_Old.sh
 
-**Deprecated/superseded** — the NotInUse folder has a further-revised variant, [../../NotInUse/Router-NAS-Movie-Parking.sh](../../NotInUse/Router-NAS-Movie-Parking.md), which switched from plaintext `sshpass -f /root/Adm/pw.txt` FTP-style rsync to the named-pipe password approach over SSH. Kept here for reference.
+**Deprecated/superseded** — the NotInUse folder has a further-revised variant, [../NotInUse/Router-NAS-Movie-Parking.sh](../NotInUse/Router-NAS-Movie-Parking.md), which switched from plaintext `sshpass -f /root/Adm/pw.txt` FTP-style rsync to the named-pipe password approach over SSH. Kept here for reference.
 
 Syncs locally stored DashCam "Parking" mode videos to the NAS over SFTP, gated on an `nmap` port-22 check.
 
@@ -13,6 +13,10 @@ Syncs locally stored DashCam "Parking" mode videos to the NAS over SFTP, gated o
 
 ```shell
 #!/bin/bash
+# Version:      1.0
+# Date:         2024-03-07
+# Test Run:
+# Developper:   Nenad(a)dragic(.)com
 
 # Run the ls command and tell the shell to ignore hangups
 nohup ls &

@@ -8,7 +8,7 @@ An index of the scripts in this folder and their documentation. Each script has 
 
 | Script | Doc | Summary |
 | --- | --- | --- |
-| `DashCam-Router-Movie.sh` | [DashCam-Router-Movie.md](DashCam-Router-Movie.md) | Downloads from the DashCam's combined `/DCIM/Movie` listing (all movie files, not split by RO/Parking), using a `ps`-grep duplicate-run check rather than the PID-file lock of the active `DashCam-Router-Movie-RO.sh`. |
+| `DashCam-Router-Movie.sh` | [DashCam-Router-Movie.md](DashCam-Router-Movie.md) | Downloads the files directly in the DashCam's `/DCIM/Movie` listing (not those in the `RO`/`Parking` subfolders), using a `ps`-grep duplicate-run check rather than the PID-file lock of the active `DashCam-Router-Movie-RO.sh`. |
 | `DashCam-Router-Movie-Parking.sh` | [DashCam-Router-Movie-Parking.md](DashCam-Router-Movie-Parking.md) | Downloads from the DashCam's `/DCIM/Movie/Parking` listing, using a `ps`-grep duplicate-run check rather than the PID-file lock of the active `DashCam-Router-Movie-RO.sh`. |
 
 ## Upload to NAS

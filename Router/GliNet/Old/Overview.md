@@ -20,7 +20,7 @@ An index of the scripts in this folder and their documentation. Each script has 
 | `Router-NAS-Movie-Parking_Old.sh` | [Router-NAS-Movie-Parking_Old.md](Router-NAS-Movie-Parking_Old.md) | Superseded by `NotInUse/Router-NAS-Movie-Parking.sh`, which moved from a plaintext `sshpass -f` file to the named-pipe password approach over SSH. |
 | `Router-NAS-Movie-RO_Old.sh` | [Router-NAS-Movie-RO_Old.md](Router-NAS-Movie-RO_Old.md) | Superseded by `Router-NAS-Movie-RO.sh`, which moved from a plaintext `sshpass -f` file to the named-pipe password approach over SSH. |
 | `Router-NAS-Pictures_Old.sh` | [Router-NAS-Pictures_Old.md](Router-NAS-Pictures_Old.md) | Superseded by `Router-NAS-Pictures.sh`, which moved from a plaintext `sshpass -f` file to the named-pipe password approach over SSH. |
-| `Backup_Old.sh` | [Backup_Old.md](Backup_Old.md) | Duplicate of the active `Backup.sh` (same commands, same NAS target by hostname). |
+| `Backup_Old.sh` | [Backup_Old.md](Backup_Old.md) | Earlier version of the active `Backup.sh` (same commands, NAS by hostname), but targets `NetBackup/BackupData/Muddi-E750/...` instead of `NetBackup/Muddi-E750/...`. |
 | `Backup_IP_Old.sh` | [Backup_IP_Old.md](Backup_IP_Old.md) | Superseded by `Backup.sh`, which targets the NAS by hostname (`nas.dragic.com`) instead of a hardcoded IP. |
 
 ## Counting & Cleanup
@@ -41,5 +41,5 @@ An index of the scripts in this folder and their documentation. Each script has 
 ## Notes
 
 - **Root:** written to run as `root` on the router. None has its own root check; `Backup_Old.sh` and `Backup_IP_Old.sh` call `sudo` for `sshpass`/`rsync`.
-- Do not schedule these: each one has a newer replacement named in its row.
+- Do not schedule these: each one except `DDNS.sh` has a newer replacement named in its row; `DDNS.sh` has no replacement and is simply no longer used.
 - Several of them read the NAS password from the plaintext file `/root/Adm/pw.txt` with `sshpass -f`; the password itself is not in git.

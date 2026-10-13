@@ -1,4 +1,4 @@
-# Daily Backup
+# Weekly Backup (Fridays)
 0 0 * * FRI sh Scripts/Backup.sh
 
 # Daily Delete files older then 10 days

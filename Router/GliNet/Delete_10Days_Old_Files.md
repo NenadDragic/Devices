@@ -13,6 +13,11 @@ Intended to run periodically (e.g. via cron) on the GL.iNet router to keep the S
 
 ```shell
 #!/bin/bash
+# Version:      1.0
+# Date:         2025-05-21
+# Test Run:
+# Developper:   Nenad(a)dragic(.)com
+
 echo '**************************************'
 echo '** File delete 10 days on SD Router **'
 echo '**************************************'
@@ -34,4 +39,5 @@ echo ""
 echo '**************************************'
 echo '** File delete 30 days on SD Router **'
 echo '**************************************'
+
 ```

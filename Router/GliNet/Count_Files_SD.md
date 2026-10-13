@@ -1,13 +1,13 @@
 # SD Card File Count - Count_Files_SD.sh
 
-This script prints a status report for the router's SD card: photo/video counts by folder, disk usage, and the WWAN0 network interface's IP address.
+This script prints a status report for the router's SD card: photo/video counts by folder, disk usage, and the WWAN0 network interface's IP address(es).
 
 ## How it works
 
 1. Prints a header and the router's `uptime`.
-2. Counts files in `/mnt/sda1/DCIM/Photo`, `/mnt/sda1/DCIM/Movie`, `/mnt/sda1/DCIM/Movie/RO`, and `/mnt/sda1/DCIM/Movie/Parking`, printing each count.
+2. Counts files in `/mnt/sda1/DCIM/Photo`, `/mnt/sda1/DCIM/Movie`, `/mnt/sda1/DCIM/Movie/RO`, and `/mnt/sda1/DCIM/Movie/Parking` with `ls -l | wc -l`, printing each count. The count includes the `total` line from `ls -l`, so each number is one higher than the actual file count.
 3. Prints disk usage via `df -h`.
-4. Prints the `wwan0` interface's IPv4 address via `ip address show`.
+4. Prints the `wwan0` interface's addresses via `ip address show` (the `grep 'inet'` matches both `inet` (IPv4) and `inet6` lines).
 
 ## Usage
 
@@ -15,6 +15,11 @@ Run this script on the GL.iNet router to get a quick overview of the DashCam SD 
 
 ```shell
 #!/bin/bash
+# Version:      1.0
+# Date:         2026-10-10
+# Test Run:
+# Developper:   Nenad(a)dragic(.)com
+
 files_count=0
 
 echo '*****************************************'
@@ -31,7 +36,7 @@ files_count=$(ls -l /mnt/sda1/DCIM/Movie | wc -l)
 echo "Movie: $files_count"
 
 files_count=$(ls -l /mnt/sda1/DCIM/Movie/RO | wc -l)
-echo "Movie RO: $files_count"
+echo "Movie RO: $files_count" 
 
 files_count=$(ls -l /mnt/sda1/DCIM/Movie/Parking | wc -l)
 echo "Movie Parking: $files_count"

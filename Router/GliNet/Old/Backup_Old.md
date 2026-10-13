@@ -1,6 +1,6 @@
 # Router Home Backup (Old) - Backup_Old.sh
 
-**Duplicate** — identical to [../Backup.sh](../Backup.md) (same commands, same NAS target by hostname). Kept here for reference; the working copy lives at [../Backup.sh](../Backup.md).
+**Old** — same commands as [../Backup.sh](../Backup.md) (NAS addressed by hostname), but it targets the module path `NetBackup/BackupData/Muddi-E750/...`, whereas `Backup.sh` uses `NetBackup/Muddi-E750/...`. Kept here for reference; the working copy lives at [../Backup.sh](../Backup.md).
 
 Rsyncs the router's home directory to a date-stamped folder on the NAS backup share.
 
@@ -13,6 +13,10 @@ Rsyncs the router's home directory to a date-stamped folder on the NAS backup sh
 
 ```shell
 #!/bin/bash
+# Version:      1.0
+# Date:         2025-05-21
+# Test Run:
+# Developper:   Nenad(a)dragic(.)com
 
 # Backup the data
 #sudo rsync -av ~ -e "ssh -l Debian_Backup" nas.dragic.com::NetBackup/BackupData/Muddi-E750/$(date +%Y-%m-%d)

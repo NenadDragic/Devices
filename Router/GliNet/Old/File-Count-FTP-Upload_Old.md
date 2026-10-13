@@ -12,7 +12,10 @@ Earlier version of the daily orchestration script: runs the SD card and DashCam 
 
 ```shell
 #!/bin/bash
-
+# Version:      1.0
+# Date:         2025-05-21
+# Test Run:
+# Developper:   Nenad(a)dragic(.)com
 
 #
 # SD Card

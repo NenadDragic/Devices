@@ -1,16 +1,20 @@
 # DashCam Router Movie Download (Not In Use) - DashCam-Router-Movie.sh
 
-**Not currently in use** — downloads from the router's combined `/DCIM/Movie` listing (all movie files, not split by RO/Parking), using a `ps`-grep duplicate-run check rather than the PID-file lock used by the active [../DashCam-Router-Movie-RO.sh](../DashCam-Router-Movie-RO.md). Not wired into the active pipeline; kept for potential future use.
+**Not currently in use** — downloads from the DashCam's (`192.168.1.254`) `/DCIM/Movie` listing — only the files directly in `/DCIM/Movie`; its filename pattern does not match files in the `RO` or `Parking` subfolders — using a `ps`-grep duplicate-run check rather than the PID-file lock used by the active [../DashCam-Router-Movie-RO.sh](../DashCam-Router-Movie-RO.md). Not wired into the active pipeline; kept for potential future use.
 
 ## How it works
 
 1. Backgrounds a no-op `nohup ls &` and defines the target IP.
 2. Counts running processes whose command line matches `DCIM/Movie` via `ps w | grep`. If exactly 1 match (only this script's own check), continues; otherwise assumes another instance is running and skips.
-3. Checks if port 21 (FTP) is open via `nmap`; if so, fetches the HTML directory listing at `/DCIM/Movie`, extracts `.MP4` filenames, and downloads any not already present in `/mnt/sda1/DCIM/Movie`.
+3. Checks if port 21 (FTP) is open via `nmap`; if so, fetches the HTML directory listing at `/DCIM/Movie`, extracts `.MP4` filenames directly in that folder (not `RO`/`Parking`), and downloads any not already present in `/mnt/sda1/DCIM/Movie`.
 4. Sets a `SIGTERM` trap to hard-kill the process, then `wait`s before exiting.
 
 ```shell
 #!/bin/bash
+# Version:      1.0
+# Date:         2024-01-02
+# Test Run:
+# Developper:   Nenad(a)dragic(.)com
 
 # Run the ls command and tell the shell to ignore hangups
 nohup ls &

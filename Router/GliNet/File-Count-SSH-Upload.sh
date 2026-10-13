@@ -1,4 +1,8 @@
 #!/bin/bash
+# Version:      1.0
+# Date:         2026-10-10
+# Test Run:
+# Developper:   Nenad(a)dragic(.)com
 
 #
 # SD Card

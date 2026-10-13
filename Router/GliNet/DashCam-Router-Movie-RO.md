@@ -1,6 +1,6 @@
 # DashCam Router Movie RO Download - DashCam-Router-Movie-RO.sh
 
-This script downloads new "RO" (protected/locked) DashCam video files from the router's web-exposed `/DCIM/Movie/RO` folder to local storage, using a PID file to prevent overlapping runs.
+This script downloads new "RO" (protected/locked) DashCam video files from the DashCam's (`192.168.1.254`) web-exposed `/DCIM/Movie/RO` folder to local storage, using a PID file to prevent overlapping runs.
 
 ## How it works
 
@@ -9,7 +9,7 @@ This script downloads new "RO" (protected/locked) DashCam video files from the r
 3. Checks the PID file: if another instance of this exact script is already running, it exits; if the PID file is stale (process gone or belongs to a different command), it removes the stale file and continues.
 4. Writes its own PID to the lock file and ensures the download directory exists.
 5. Checks with `nmap` whether port 21 (FTP) is open on the target, as an informational check, then proceeds to download either way. `nmap` must be installed (it is in `System/Install.sh`); if it is missing, the check reports the port as not open and the download still runs.
-6. Fetches the HTML directory listing via `wget`, extracts `.MP4` filenames matching the DashCam naming pattern with `grep`/`sed`, and downloads any file not already present locally.
+6. Fetches the HTML directory listing via `wget`, extracts `.MP4` filenames matching the DashCam naming pattern with `grep`/`sed`, and downloads any file not already present locally. The pattern accepts `_R`, `_I` and `_F` files when port 21 is open, but only `_R` and `_F` in the port-21-closed fallback branch, so `_I` files are skipped there.
 7. Exits 0 on completion; the `EXIT` trap logs the final status and removes the PID file.
 
 ## Usage
@@ -18,6 +18,11 @@ Intended to run periodically (e.g. via cron) on the GL.iNet router to pull prote
 
 ```shell
 #!/bin/bash
+# Version:      1.0
+# Date:         2026-10-10
+# Test Run:
+# Developper:   Nenad(a)dragic(.)com
+
 # === Konfiguration ===
 # IP-adresse eller værtsnavn for enheden, hvorfra filer skal downloades
 target_ip="192.168.1.254"
@@ -232,7 +237,7 @@ echo "Kontrollerer om port 21 (FTP) er åben på $target_ip..."
                         echo "Advarsel: Kunne ikke downloade $mp4_file_clean fra $remote_file_url"
                     fi
                 else
-                    :
+                    : 
                 fi
             done
             IFS=$SAVEIFS

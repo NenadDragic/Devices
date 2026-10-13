@@ -2,7 +2,7 @@
 
 **Deprecated** — superseded by [../DashCam-Router-Movie-RO.sh](../DashCam-Router-Movie-RO.md), which replaced the ad-hoc `ps`-based duplicate check with a proper PID-file lock and added trap-based cleanup. Kept here for reference.
 
-Earlier version that downloads new "RO" DashCam video files from the router's web-exposed `/DCIM/Movie/RO` folder, guarding against overlapping runs by grepping the process list instead of using a PID file.
+Earlier version that downloads new "RO" DashCam video files from the DashCam's (`192.168.1.254`) web-exposed `/DCIM/Movie/RO` folder, guarding against overlapping runs by grepping the process list instead of using a PID file.
 
 ## How it works
 
@@ -13,6 +13,10 @@ Earlier version that downloads new "RO" DashCam video files from the router's we
 
 ```shell
 #!/bin/bash
+# Version:      1.0
+# Date:         2024-03-07
+# Test Run:
+# Developper:   Nenad(a)dragic(.)com
 
 # Run the ls command and tell the shell to ignore hangups
 nohup ls &
