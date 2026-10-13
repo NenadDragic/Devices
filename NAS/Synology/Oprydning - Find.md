@@ -1,8 +1,16 @@
 # Oprydning - Find
 
-Scans `/volume1/Dragic` once and reports junk files and bad file names, without changing anything. Replaces the separate Find scripts (`bak files - Find.sh`, `tmp files - Find.sh`, `Thumbs.db files - Find.sh`, `Tilde files - Find.sh`, `Find Corrup files.sh`, `Find Invalid files.sh`, `Two or more spaces in filename - Find.sh`).
+Command for the DSM task that runs `/volume1/root-scripts/Oprydning.sh` with `MODE=find`. It reports junk files and bad file names in `/volume1/Dragic` and shows disk usage, without changing anything. Replaces the separate Find scripts (`bak files - Find.sh`, `tmp files - Find.sh`, `Thumbs.db files - Find.sh`, `Tilde files - Find.sh`, `Find Corrup files.sh`, `Find Invalid files.sh`, `Two or more spaces in filename - Find.sh`).
 
-The same script is used by `Oprydning - Delete.sh`; only `MODE` differs.
+`Oprydning - Delete.sh` calls the same script with `MODE=clean`. Run Find first and read the log before the Delete job runs.
+
+> **Note:** `Oprydning.sh` is not in this repository yet, although the file comment says "Koden ligger i Oprydning.sh (git)". The description below is based on the last version that was in git (the earlier combined `Oprydning - Find.sh` / `Oprydning - Delete.sh`, v1.0/v1.1). The disk usage output mentioned in the file comment is new and not described in detail here.
+
+## Command
+
+```bash
+MODE=find bash /volume1/root-scripts/Oprydning.sh
+```
 
 ## What it reports
 
@@ -16,18 +24,17 @@ The same script is used by `Oprydning - Delete.sh`; only `MODE` differs.
 | INVALID | `*INVALID*.*` - report only, never deleted |
 | Double spaces | Files and folders with two or more consecutive spaces in the name |
 
-`#recycle` and `@eaDir` are skipped.
+It also shows disk usage. `#recycle` and `@eaDir` are skipped.
 
 ## Configuration
 
-| Variable | Default | Description |
+| Variable | Value | Description |
 | --- | --- | --- |
-| `MODE` | `find` | `find` reports only; `clean` deletes and renames (see `Oprydning - Delete.md`) |
-| `ROOT` | `/volume1/Dragic` | Share to scan |
-| `MIN_AGE_MIN` | `1440` | In `clean` mode, only delete files not modified in the last 24 hours (renames ignore it) |
+| `MODE` | `find` | `find` reports only; `clean` deletes and renames (see [Oprydning - Delete.md](Oprydning%20-%20Delete.md)) |
+| `ROOT` | `/volume1/Dragic` | Share to scan (set in `Oprydning.sh`) |
+| `MIN_AGE_MIN` | `1440` | Only used in `clean` mode (set in `Oprydning.sh`) |
 
-## Usage
+## Notes
 
-```bash
-bash "Oprydning - Find.sh"
-```
+- The file has no shebang; it is the command text pasted into the DSM task, which runs it with `bash`.
+- `Oprydning.sh` must exist at `/volume1/root-scripts/` on the NAS.

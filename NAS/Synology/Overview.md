@@ -16,8 +16,8 @@ An index of the scripts in this folder and their documentation. Each script has 
 
 | Script | Doc | Summary |
 | --- | --- | --- |
-| `Oprydning - Find.sh` | [Oprydning - Find.md](Oprydning%20-%20Find.md) | One scan of `/volume1/Dragic` that reports `.bak`, `.tmp`, `Thumbs.db`, `~` files, CORRUPT/INVALID files and names with double spaces. Replaces the separate Find scripts, now in `Old/`. |
-| `Oprydning - Delete.sh` | [Oprydning - Delete.md](Oprydning%20-%20Delete.md) | Same script as `Oprydning - Find.sh` but with `MODE=clean`: deletes `.bak`, `.tmp`, `Thumbs.db` and `~` files older than 24 hours and collapses double spaces in names (regardless of age). Replaces the separate Delete scripts, now in `Old/`. |
+| `Oprydning - Find.sh` | [Oprydning - Find.md](Oprydning%20-%20Find.md) | Runs `/volume1/root-scripts/Oprydning.sh` with `MODE=find`: one scan of `/volume1/Dragic` that reports `.bak`, `.tmp`, `Thumbs.db`, `~` files, CORRUPT/INVALID files and names with double spaces, and shows disk usage. Changes nothing. Replaces the separate Find scripts, now in `Old/`. |
+| `Oprydning - Delete.sh` | [Oprydning - Delete.md](Oprydning%20-%20Delete.md) | Runs the same `Oprydning.sh` with `MODE=clean`: deletes `.bak`, `.tmp`, `Thumbs.db` and `~` files older than 24 hours and collapses double spaces in names (regardless of age). Replaces the separate Delete scripts, now in `Old/`. |
 | `Oprydning - DashCam.sh` | [Oprydning - DashCam.md](Oprydning%20-%20DashCam.md) | Weekly DashCam job: deletes files older than 30 days, shows file counts and sizes per folder, and prints the router reports from the last 7 days. Replaces six DashCam jobs, now in `Old/`. |
 
 ---
@@ -26,5 +26,6 @@ An index of the scripts in this folder and their documentation. Each script has 
 
 - **User:** the scripts are run by DSM's Task Scheduler, and the user is chosen per task there. None of the scripts has its own root check or calls `sudo`. `Oprydning - Find.sh` and `Oprydning - Delete.sh` read and change the whole `Dragic` share; `USB_Copy_Clean_Delete.sh` must run as `root` (the called script checks it). `Oprydning - DashCam.sh` runs as the user `DashCam`, and the `Hent` scripts run as `ElBosso` (they use ElBosso's SSH key).
 - **Destructive/irreversible scripts:** `Oprydning - Delete.sh` (`MODE=clean`, deletes junk files with `rm` and renames names with double spaces), `Oprydning - DashCam.sh` (deletes files older than 30 days), `USB_Copy_Clean_Delete.sh` (in `Run` mode the called script removes files from the USB disk after copying and deletes old backups; as-is the file also runs `Run` right after `Dryrun`).
-- **NAS and git can differ:** the NAS job `Oprydning - Delete` still had `MODE=find` in the config backup of 2026-10-06 - update it there as well. `nas-dss-check.sh` in the `Linux-Scripts` repository compares a DSM export with this folder.
+- **`Oprydning.sh` is not in git:** `Oprydning - Find.sh` and `Oprydning - Delete.sh` are only the DSM task commands; the real script `/volume1/root-scripts/Oprydning.sh` is not in any of the repositories yet, and neither is the real `USB_Copy_Clean_Delete.sh` here (it is in `Linux-Scripts`).
+- **NAS and git can differ:** `nas-dss-check.sh` in the `Linux-Scripts` repository compares a DSM export with this folder.
 - **`Old/`:** scripts that are no longer scheduled, or that were replaced by the jobs above, live in [Old/](Old/) and are indexed in [Old/Overview.md](Old/Overview.md).
