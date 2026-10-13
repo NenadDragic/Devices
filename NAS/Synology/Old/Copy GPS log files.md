@@ -1,5 +1,7 @@
 # Copy GPS log files
 
+> **Replaced by [`Hent - GPS-logs.sh`](../Hent%20-%20GPS-logs.md)**, which fetches the same logs with `rsync`, creates the destination folder if needed and exits with an error code when something fails.
+
 Copies GPS monitor CSV logs from a remote host to the NAS, then lists the destination contents.
 
 ## Commands
