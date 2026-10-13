@@ -1,6 +1,6 @@
 # USB_Copy_Clean_Delete
 
-Wrapper for the DSM task that runs `/volume1/root-scripts/USB_Copy_Clean_Delete.sh` on the NAS. It sets the parameters as environment variables and calls the real script. The real script is not in this repository; it is documented in the `Linux-Scripts` repository at `Synology/USB_Copy_Clean_Delete.md`.
+Wrapper for the DSM task that runs `/volume1/root-scripts/USB_Copy_Clean_Delete.sh` on the NAS. It sets the parameters as environment variables and calls the real script. The real script is in [`root-scripts/USB_Copy_Clean_Delete.sh`](root-scripts/USB_Copy_Clean_Delete.md) (an identical copy is also in the `Linux-Scripts` repository).
 
 > **WARNING:** The file contains two blocks - `MODE=Dryrun` and then `MODE=Run` - with nothing between them. Run as-is, it does a dry run and then **immediately a real run**, which moves data off the USB disk and deletes old backups. The blocks are meant as the commands for two separate DSM tasks (one dry run, one real run); paste only the block you want into each task.
 
@@ -30,7 +30,7 @@ bash /volume1/root-scripts/USB_Copy_Clean_Delete.sh
 3. Deletes old log files if `LOG_DAYS` > 0.
 4. Prints disk usage for `NetBackup`.
 
-See the `Linux-Scripts` documentation for details, prerequisites (root, marker file `.netbackup-usb` on the USB disk) and exit codes. Note that a dry run exits with `3`, which DSM reports as a failure.
+See [root-scripts/USB_Copy_Clean_Delete.md](root-scripts/USB_Copy_Clean_Delete.md) for details, prerequisites (root, marker file `.netbackup-usb` on the USB disk) and exit codes. Note that a dry run exits with `3`, which DSM reports as a failure.
 
 ## Usage
 

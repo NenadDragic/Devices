@@ -4,7 +4,7 @@ Command for the DSM task that runs `/volume1/root-scripts/Oprydning.sh` with `MO
 
 `Oprydning - Find.sh` calls the same script with `MODE=find`. Run Find first and read the log before this job runs.
 
-> **Note:** `Oprydning.sh` is not in this repository yet, although the `Oprydning - Find.sh` comment says "Koden ligger i Oprydning.sh (git)". The description below is based on the last version that was in git (the earlier combined `Oprydning - Delete.sh`, v1.1).
+The script itself is documented in [root-scripts/Oprydning.md](root-scripts/Oprydning.md).
 
 ## Command
 
@@ -25,11 +25,11 @@ MODE=clean bash /volume1/root-scripts/Oprydning.sh
 | Variable | Value | Description |
 | --- | --- | --- |
 | `MODE` | `clean` | `clean` deletes and renames; `find` reports only (see [Oprydning - Find.md](Oprydning%20-%20Find.md)) |
-| `ROOT` | `/volume1/Dragic` | Share to clean (set in `Oprydning.sh`) |
+| `ROOT` | `/volume1/Dragic` | Share to clean (set in [`Oprydning.sh`](root-scripts/Oprydning.md)) |
 | `MIN_AGE_MIN` | `1440` | Only delete files not modified in the last 24 hours (does not apply to the double-space renames; set in `Oprydning.sh`) |
 
 ## Notes
 
 - Deleted files are removed with `rm` and do not go to the recycle bin.
-- The file has no shebang; it is the command text pasted into the DSM task, which runs it with `bash`.
-- `Oprydning.sh` must exist at `/volume1/root-scripts/` on the NAS.
+- The file is the command for the DSM task; the task runs the `MODE=… bash …` line.
+- `Oprydning.sh` must be copied from `root-scripts/` to `/volume1/root-scripts/` on the NAS.

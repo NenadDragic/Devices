@@ -21,6 +21,8 @@ This `Old` subfolder holds Synology NAS Task Scheduler scripts that are no longe
 
 ## Disk Usage
 
+`Disk Used size - Dragic.sh` was replaced by the disk usage report in [`root-scripts/Oprydning.sh`](../root-scripts/Oprydning.md) (`MODE=find`), and `Disk Used size - NetBackup.sh` by [`root-scripts/USB_Copy_Clean_Delete.sh`](../root-scripts/USB_Copy_Clean_Delete.md).
+
 | Script | Doc | Summary |
 | --- | --- | --- |
 | `Disk Used size - Dragic.sh` | [Disk Used size - Dragic.md](Disk%20Used%20size%20-%20Dragic.md) | Shows disk usage for `/volume1/Dragic/` up to 1 directory level deep, then prints the total. |

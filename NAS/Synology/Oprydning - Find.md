@@ -4,7 +4,7 @@ Command for the DSM task that runs `/volume1/root-scripts/Oprydning.sh` with `MO
 
 `Oprydning - Delete.sh` calls the same script with `MODE=clean`. Run Find first and read the log before the Delete job runs.
 
-> **Note:** `Oprydning.sh` is not in this repository yet, although the file comment says "Koden ligger i Oprydning.sh (git)". The description below is based on the last version that was in git (the earlier combined `Oprydning - Find.sh` / `Oprydning - Delete.sh`, v1.0/v1.1). The disk usage output mentioned in the file comment is new and not described in detail here.
+The script itself is documented in [root-scripts/Oprydning.md](root-scripts/Oprydning.md).
 
 ## Command
 
@@ -24,17 +24,17 @@ MODE=find bash /volume1/root-scripts/Oprydning.sh
 | INVALID | `*INVALID*.*` - report only, never deleted |
 | Double spaces | Files and folders with two or more consecutive spaces in the name |
 
-It also shows disk usage. `#recycle` and `@eaDir` are skipped.
+It also shows disk usage per top-level folder (without `Log`). `#recycle` and `@eaDir` are skipped.
 
 ## Configuration
 
 | Variable | Value | Description |
 | --- | --- | --- |
 | `MODE` | `find` | `find` reports only; `clean` deletes and renames (see [Oprydning - Delete.md](Oprydning%20-%20Delete.md)) |
-| `ROOT` | `/volume1/Dragic` | Share to scan (set in `Oprydning.sh`) |
-| `MIN_AGE_MIN` | `1440` | Only used in `clean` mode (set in `Oprydning.sh`) |
+| `ROOT` | `/volume1/Dragic` | Share to scan (set in [`Oprydning.sh`](root-scripts/Oprydning.md)) |
+| `MIN_AGE_MIN` | `1440` | Only used in `clean` mode (set in [`Oprydning.sh`](root-scripts/Oprydning.md)) |
 
 ## Notes
 
-- The file has no shebang; it is the command text pasted into the DSM task, which runs it with `bash`.
-- `Oprydning.sh` must exist at `/volume1/root-scripts/` on the NAS.
+- The file is the command for the DSM task; the task runs the `MODE=… bash …` line.
+- `Oprydning.sh` must be copied from `root-scripts/` to `/volume1/root-scripts/` on the NAS.
