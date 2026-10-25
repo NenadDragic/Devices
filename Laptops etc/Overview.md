@@ -10,6 +10,12 @@ An index of the scripts in this folder and their documentation. Each script has 
 | --- | --- | --- |
 | `Setup.sh` | [Setup.md](Setup.md) | Shows install status (installed/not, and whether it's the latest version) for ~29 frequently used CLI tools spanning core utilities, backup/file handling, system updates, development, networking, and terminal tools, and lets you pick several at once to install/upgrade together via `apt-get`. |
 
+## Subfolders
+
+| Folder | Overview | What's there |
+| --- | --- | --- |
+| `Anbernic RG40XXV` | [Overview](Anbernic%20RG40XXV/Overview.md) | Backup, validation and restore of the handheld's SD card as a compressed whole-card image (`sd-backup.sh`, `sd-validate.sh`, `sd-restore.sh`). Needs `sudo` and `zstd`. |
+
 ---
 
 ## Notes
