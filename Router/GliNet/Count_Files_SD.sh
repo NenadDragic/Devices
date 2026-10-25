@@ -13,24 +13,24 @@ echo ""
 echo "Uptime: $(uptime)"
 echo ""
 
-files_count=$(ls -l /mnt/sda1/DCIM/Photo | wc -l)
+files_count=$(find /mnt/sda1/DCIM/Photo -maxdepth 1 -type f | wc -l)
 echo "Photos: $files_count"
 
-files_count=$(ls -l /mnt/sda1/DCIM/Movie | wc -l)
+files_count=$(find /mnt/sda1/DCIM/Movie -maxdepth 1 -type f | wc -l)
 echo "Movie: $files_count"
 
-files_count=$(ls -l /mnt/sda1/DCIM/Movie/RO | wc -l)
+files_count=$(find /mnt/sda1/DCIM/Movie/RO -maxdepth 1 -type f | wc -l)
 echo "Movie RO: $files_count" 
 
-files_count=$(ls -l /mnt/sda1/DCIM/Movie/Parking | wc -l)
+files_count=$(find /mnt/sda1/DCIM/Movie/Parking -maxdepth 1 -type f | wc -l)
 echo "Movie Parking: $files_count"
 
 echo ""
 echo "Disk Info:"
-echo $(df -h)
+df -h
 echo ""
 echo "WWAN0:"
-echo $(ip address show wwan0 | grep 'inet')
+ip address show wwan0 | grep 'inet'
 echo ""
 echo '*****************************************'
 echo '** SD kort - Router ** SD kort - Router **'
